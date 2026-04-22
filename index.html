@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GHL Migration Master Plan &middot; Driscoll-Peca</title>
+<style>
+/* ── DPT PALETTE ──────────────────────────────────────
+   Navy    #050e3d   (primary bg / headers)
+   Teal    #00fbf0   (primary accent)
+   Coral   #ff557e   (alerts / critical)
+   Sky     #05c3f9   (secondary accent)
+   Mint    #bfdddb   (subtle bg / borders)
+   Warm Grey #615856 (muted text)
+──────────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Courier New',monospace;background:#050e3d;color:#e8f4f4;min-height:100vh;font-size:14px}
+.header{background:rgba(5,14,61,0.97);border-bottom:2px solid #00fbf0;padding:14px 20px;position:sticky;top:0;z-index:100}
+.header-eyebrow{font-size:10px;color:#00fbf0;text-transform:uppercase;letter-spacing:3px;display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.dot{width:7px;height:7px;border-radius:50%;background:#00fbf0;display:inline-block;flex-shrink:0}
+.header h1{font-size:19px;font-weight:900;color:#fff;letter-spacing:-0.5px}
+.header p{font-size:11px;color:#bfdddb;margin-top:2px}
+.nav{background:rgba(5,14,61,0.95);border-bottom:1px solid rgba(0,251,240,0.2);padding:8px 16px;overflow-x:auto;white-space:nowrap;position:sticky;top:58px;z-index:99}
+.nav-btn{display:inline-block;padding:6px 13px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;margin-right:4px;border:none;font-family:'Courier New',monospace;transition:all 0.15s;letter-spacing:0.3px}
+.nav-btn.active{background:#00fbf0;color:#050e3d}
+.nav-btn:not(.active){background:transparent;color:#bfdddb;border:1px solid rgba(191,221,219,0.2)}
+.nav-btn:not(.active):hover{color:#00fbf0;border-color:#00fbf0}
+.content{max-width:920px;margin:0 auto;padding:28px 18px 100px}
+.section{display:none}
+.section.active{display:block}
+h2{font-size:20px;font-weight:900;color:#00fbf0;margin:32px 0 12px;padding-bottom:10px;border-bottom:2px solid rgba(0,251,240,0.3)}
+h3{font-size:13px;font-weight:700;color:#05c3f9;margin:22px 0 8px;text-transform:uppercase;letter-spacing:1px}
+p{font-size:13px;color:#bfdddb;line-height:1.7;margin-bottom:8px}
+strong{color:#fff}
+ul{list-style:none;margin-bottom:12px}
+ul li{font-size:13px;color:#bfdddb;line-height:1.7;margin-bottom:3px;padding-left:18px;position:relative}
+ul li:before{content:"›";position:absolute;left:0;color:#00fbf0;font-weight:900}
+.block{border-radius:8px;padding:16px;margin-bottom:16px;background:rgba(255,255,255,0.04)}
+.block h4{font-size:12px;font-weight:700;color:#fff;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.block.teal{border-left:4px solid #00fbf0}
+.block.coral{border-left:4px solid #ff557e}
+.block.sky{border-left:4px solid #05c3f9}
+.block.amber{border-left:4px solid #fbbf24}
+.block.purple{border-left:4px solid #a78bfa}
+.block.mint{border-left:4px solid #bfdddb}
+.badge{display:inline-block;font-size:10px;font-family:'Courier New',monospace;padding:2px 7px;border-radius:4px;font-weight:700;letter-spacing:0.3px}
+.badge.green{background:rgba(0,251,240,0.12);color:#00fbf0;border:1px solid rgba(0,251,240,0.4)}
+.badge.red{background:rgba(255,85,126,0.15);color:#ff557e;border:1px solid rgba(255,85,126,0.5)}
+.badge.yellow{background:rgba(251,191,36,0.12);color:#fcd34d;border:1px solid rgba(251,191,36,0.4)}
+.badge.blue{background:rgba(5,195,249,0.12);color:#05c3f9;border:1px solid rgba(5,195,249,0.4)}
+.badge.mint{background:rgba(191,221,219,0.12);color:#bfdddb;border:1px solid rgba(191,221,219,0.3)}
+.table-wrap{overflow-x:auto;margin:16px 0;border-radius:10px;border:1px solid rgba(0,251,240,0.2)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:rgba(0,251,240,0.08);color:#00fbf0;font-weight:700;padding:10px 12px;text-align:left;white-space:nowrap;text-transform:uppercase;font-size:10px;letter-spacing:0.8px;border-bottom:1px solid rgba(0,251,240,0.2)}
+td{padding:10px 12px;color:#bfdddb;border-bottom:1px solid rgba(191,221,219,0.08);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
+tr:hover td{background:rgba(0,251,240,0.04)}
+.faq-profile{margin-bottom:44px}
+.faq-label{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;padding:10px 16px;border-radius:6px;margin-bottom:16px}
+.faq-label.teal{border-left:4px solid #00fbf0;background:rgba(0,251,240,0.06);color:#00fbf0}
+.faq-label.sky{border-left:4px solid #05c3f9;background:rgba(5,195,249,0.06);color:#05c3f9}
+.faq-label.purple{border-left:4px solid #a78bfa;background:rgba(167,139,250,0.06);color:#a78bfa}
+.faq-label.amber{border-left:4px solid #fbbf24;background:rgba(251,191,36,0.06);color:#fbbf24}
+.faq-item{border:1px solid rgba(191,221,219,0.12);border-radius:8px;margin-bottom:8px;background:rgba(5,14,61,0.6);overflow:hidden;transition:border-color 0.2s}
+.faq-item:hover{border-color:rgba(0,251,240,0.3)}
+details[open].faq-item{border-color:rgba(0,251,240,0.4);background:rgba(0,251,240,0.03)}
+.faq-q{padding:14px 16px;cursor:pointer;font-size:13px;font-weight:600;color:#e8f4f4;display:flex;align-items:flex-start;gap:10px;list-style:none}
+.faq-q::-webkit-details-marker{display:none}
+.faq-arrow{color:#00fbf0;font-size:18px;font-weight:900;flex-shrink:0;transition:transform 0.2s;line-height:1;margin-top:1px}
+details[open] .faq-arrow{transform:rotate(90deg)}
+.faq-a{padding:4px 18px 18px 42px}
+.faq-a p{color:#bfdddb;font-size:13px;line-height:1.75;margin-bottom:10px}
+.faq-a code{background:rgba(0,251,240,0.1);padding:1px 6px;border-radius:3px;font-size:12px;color:#00fbf0;border:1px solid rgba(0,251,240,0.2)}
+.phase{border-radius:10px;padding:18px;margin-bottom:20px;border-left:4px solid}
+.phase.teal{border-color:#00fbf0;background:rgba(0,251,240,0.04)}
+.phase.sky{border-color:#05c3f9;background:rgba(5,195,249,0.04)}
+.phase.coral{border-color:#ff557e;background:rgba(255,85,126,0.04)}
+.phase-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.phase-num{font-size:36px;font-weight:900;line-height:1}
+.phase.teal .phase-num{color:#00fbf0}
+.phase.sky .phase-num{color:#05c3f9}
+.phase.coral .phase-num{color:#ff557e}
+.phase-title{font-size:14px;font-weight:700;color:#bfdddb}
+.phase-item{display:flex;gap:10px;margin-bottom:7px;font-size:13px;color:#bfdddb;line-height:1.6}
+.phase-dot{flex-shrink:0;color:#615856;margin-top:3px}
+.phase-item.goal{font-weight:700;color:#fff}
+.phase-item.goal .phase-dot{color:#00fbf0}
+.risk{background:rgba(5,14,61,0.8);border:1px solid rgba(191,221,219,0.1);border-radius:8px;padding:14px;margin-bottom:8px;display:flex;gap:14px;transition:border-color 0.2s}
+.risk:hover{border-color:rgba(0,251,240,0.3)}
+.risk-num{font-size:13px;font-weight:900;color:rgba(97,88,86,0.6);flex-shrink:0;width:26px;margin-top:1px;font-family:'Courier New',monospace}
+.risk-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:5px;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.profile-block{border-radius:10px;padding:16px;margin-bottom:24px;margin-top:28px}
+.profile-block.teal{border-left:4px solid #00fbf0;background:rgba(0,251,240,0.05)}
+.profile-block.sky{border-left:4px solid #05c3f9;background:rgba(5,195,249,0.05)}
+.profile-block.purple{border-left:4px solid #a78bfa;background:rgba(167,139,250,0.05)}
+.profile-block.amber{border-left:4px solid #fbbf24;background:rgba(251,191,36,0.05)}
+.profile-block h3{margin:0 0 4px}
+.profile-block.teal h3{color:#00fbf0}
+.profile-block.sky h3{color:#05c3f9}
+.profile-block.purple h3{color:#a78bfa}
+.profile-block.amber h3{color:#fbbf24}
+.profile-block p{margin:0;font-size:12px}
+.mod{background:rgba(5,14,61,0.7);border:1px solid rgba(191,221,219,0.1);border-radius:8px;padding:12px 14px;margin-bottom:8px;transition:border-color 0.2s}
+.mod:hover{border-color:rgba(0,251,240,0.25)}
+.mod-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.mod-tag{font-size:10px;font-weight:900;padding:2px 8px;border-radius:4px;font-family:'Courier New',monospace;letter-spacing:0.3px}
+.mod-tag.teal{background:rgba(0,251,240,0.12);color:#00fbf0;border:1px solid rgba(0,251,240,0.3)}
+.mod-tag.sky{background:rgba(5,195,249,0.12);color:#05c3f9;border:1px solid rgba(5,195,249,0.3)}
+.mod-tag.purple{background:rgba(167,139,250,0.12);color:#a78bfa;border:1px solid rgba(167,139,250,0.3)}
+.mod-tag.amber{background:rgba(251,191,36,0.12);color:#fbbf24;border:1px solid rgba(251,191,36,0.3)}
+.mod-title{font-size:13px;font-weight:700;color:#e8f4f4;flex:1}
+.mod-time{font-size:11px;color:#615856;margin-left:auto}
+.mod-win{font-size:11px;color:#00fbf0;margin-top:5px}
+.mod-win-lbl{color:#615856;margin-right:4px}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:#050e3d}
+::-webkit-scrollbar-thumb{background:#00fbf0;border-radius:3px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-eyebrow"><span class="dot"></span>Driscoll-Peca Team &middot; Internal Use</div>
+  <h1>GHL Migration Master Plan</h1>
+  <p>Follow Up Boss &rarr; GoHighLevel &middot; Strategy + Course Design + Implementation</p>
+</div>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="show('A',this)">A &middot; FUB vs GHL</button>
+  <button class="nav-btn" onclick="show('B',this)">B &middot; Hidden Risks</button>
+  <button class="nav-btn" onclick="show('C',this)">C &middot; Architecture</button>
+  <button class="nav-btn" onclick="show('D',this)">D &middot; Tools</button>
+  <button class="nav-btn" onclick="show('E',this)">E &middot; Course</button>
+  <button class="nav-btn" onclick="show('F',this)">F &middot; Roadmap</button>
+  <button class="nav-btn" onclick="show('G',this)">G &middot; Top 25</button>
+  <button class="nav-btn" onclick="show('H',this)">H &middot; Honest Recs</button>
+  <button class="nav-btn" onclick="show('FAQ',this)">FAQ</button>
+</div>
+
+<div class="content">
+
+<!-- ══ SECTION A ══ -->
+<div id="sec-A" class="section active">
+<h2>Section A: FUB vs GHL Comparative Audit</h2>
+<p>Function-by-function analysis. Every critical gap includes a proposed solution. This table is the foundation of the internal training course.</p>
+<div class="block coral"><h4>Assumptions:</h4><p>The team actively uses FUB with Smart Lists as their daily work tool. The most critical gap is replacing Smart Lists before go-live. Action Plans have at least 3-5 active sequences that need to be rebuilt.</p></div>
+<div class="table-wrap"><table>
+<tr><th>FUB Function</th><th>GHL Equivalent</th><th>Difficulty</th><th>Gap</th><th>Solution</th></tr>
+<tr><td><strong>Smart Lists</strong></td><td>Custom Views in Contacts + Pipeline filters</td><td><span class="badge yellow">Medium</span></td><td><span class="badge red">CRITICAL</span></td><td>Build equivalent views before go-live. Document each one.</td></tr>
+<tr><td><strong>Stages</strong></td><td>Pipeline Stages &mdash; direct equivalent</td><td><span class="badge green">Low</span></td><td><span class="badge green">None</span></td><td>Map FUB stages &rarr; GHL. Already configured: A Hot, B Warm, etc.</td></tr>
+<tr><td><strong>Tags</strong></td><td>Tags in GHL &mdash; more powerful</td><td><span class="badge green">Low</span></td><td><span class="badge green">None</span></td><td>Audit 34 tags. Create naming convention before migrating.</td></tr>
+<tr><td><strong>Action Plans</strong></td><td>Workflows &mdash; more powerful but more complex</td><td><span class="badge yellow">Medium-High</span></td><td><span class="badge yellow">Partial</span></td><td>Rebuild each Action Plan as a Workflow. Cannot be imported.</td></tr>
+<tr><td><strong>Email Signatures</strong></td><td>Templates with embedded HTML signature per agent</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Partial</span></td><td>Create template per agent with signature included.</td></tr>
+<tr><td><strong>Smart List Zero</strong></td><td>Not native &mdash; Custom View with filters</td><td><span class="badge red">High</span></td><td><span class="badge red">CRITICAL</span></td><td>Build view: last activity &gt; X days + active stage.</td></tr>
+<tr><td><strong>Notes &amp; Tasks</strong></td><td>Notes + Tasks in GHL &mdash; functional equivalent</td><td><span class="badge green">Low</span></td><td><span class="badge green">None</span></td><td>Basic UI training. Minor flow differences.</td></tr>
+<tr><td><strong>Merge Duplicates</strong></td><td>Merge Contacts &mdash; more manual</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Low</span></td><td>Pre-migration deduplication SOP.</td></tr>
+<tr><td><strong>Call / VM Drop</strong></td><td>GHL Phone System &mdash; A2P, VM Drop, recording</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Partial</span></td><td>Configure numbers, VM drop, ring timeout per number.</td></tr>
+<tr><td><strong>Email Thread Sharing</strong></td><td>Omnichannel Conversations &mdash; objectively better</td><td><span class="badge green">Low</span></td><td><span class="badge green">None</span></td><td>Train on unified inbox.</td></tr>
+<tr><td><strong>Notifications</strong></td><td>Workflow triggers &rarr; Email/SMS/In-App</td><td><span class="badge green">Low</span></td><td><span class="badge green">None</span></td><td>Replicate in Workflow. Test on Lead Connector mobile app.</td></tr>
+<tr><td><strong>Blind Cast / Pond</strong></td><td>Bulk Actions + Broadcast &mdash; more powerful</td><td><span class="badge green">Low</span></td><td><span class="badge green">None</span></td><td>Train on Broadcasts and Bulk Actions.</td></tr>
+<tr><td><strong>Users / Roles</strong></td><td>Admin, User, Staff per pipeline and sub-account</td><td><span class="badge green">Low</span></td><td><span class="badge green">None</span></td><td>Map current roles. Configure before go-live.</td></tr>
+<tr><td><strong>Lead Profile View</strong></td><td>Contact View + configured Custom Fields</td><td><span class="badge yellow">Medium</span></td><td><span class="badge yellow">Partial</span></td><td>Define which fields appear first. Create equivalent custom fields.</td></tr>
+</table></div>
+<div class="block amber"><h4>Key operational note:</h4><p>Smart Lists is the most important gap for agents. They will lose their daily workflow if equivalent Custom Views are not built before go-live. Adoption depends entirely on this being ready on Day 1.</p></div>
+</div>
+
+<!-- ══ SECTION B ══ -->
+<div id="sec-B" class="section">
+<h2>Section B: Critical Functions You Probably Forgot to Audit</h2>
+<p>These are the traps that destroy migrations. They're not obvious, but each one can cause lead loss, operational errors, or team rejection of the system.</p>
+<div class="risk"><div class="risk-num">01</div><div><div class="risk-title">Ring Timeout &amp; Voicemail Settings</div><p>FUB configures rings before voicemail per user. In GHL it's in Phone Settings per number. Without configuring, calls will route incorrectly.</p></div></div>
+<div class="risk"><div class="risk-num">02</div><div><div class="risk-title">Lead Source Attribution</div><p>FUB saves the source automatically. In GHL it must be captured via UTM params or a hidden form field. Without this, you lose attribution from Showcase, website, and Facebook ads.</p></div></div>
+<div class="risk"><div class="risk-num">03</div><div><div class="risk-title">Round Robin Assignment Logic</div><p>FUB has native round robin. GHL also has it but via Workflow with conditionals. If not rebuilt identically, leads go to the wrong agent from Day 1.</p></div></div>
+<div class="risk"><div class="risk-num">04</div><div><div class="risk-title">Duplicate Lead Handling</div><p>FUB merges duplicates with defined logic. GHL creates duplicates if there's no active deduplication workflow. Can contaminate the entire database.</p></div></div>
+<div class="risk"><div class="risk-num">05</div><div><div class="risk-title">Do Not Contact / Opt-Out (CASL)</div><p>FUB has a DNC field. GHL has opt-out per channel. If not mapped before migrating, you'll send messages to contacts who requested no contact. Legal risk under CASL in Canada.</p></div></div>
+<div class="risk"><div class="risk-num">06</div><div><div class="risk-title">Email Deliverability &mdash; SPF/DKIM/DMARC</div><p>GHL requires you to configure SPF/DKIM for your domain. Without this, all nurture emails go to spam from Day 1. Agents assume GHL doesn't work.</p></div></div>
+<div class="risk"><div class="risk-num">07</div><div><div class="risk-title">Timezone Settings per User and Workflow</div><p>Workflows configured in UTC send SMS at 3am Ontario time. Silent error with devastating consequences for first impressions.</p></div></div>
+<div class="risk"><div class="risk-num">08</div><div><div class="risk-title">Task Reminders on Mobile</div><p>Push notifications in Lead Connector require device-specific configuration. Without this, agents don't receive task alerts.</p></div></div>
+<div class="risk"><div class="risk-num">09</div><div><div class="risk-title">Pipeline Visibility by Role</div><p>Without configured permissions, agents see other agents' leads. Creates confusion and internal conflicts from Day 1.</p></div></div>
+<div class="risk"><div class="risk-num">10</div><div><div class="risk-title">Action Plan Pausing Logic</div><p>In FUB you can pause an Action Plan without deleting it. In GHL the flow is different. Without training, agents don't know how to stop an active sequence.</p></div></div>
+<div class="risk"><div class="risk-num">11</div><div><div class="risk-title">Google Calendar Sync</div><p>Without sync, agents see appointments in GHL but not in Google Calendar. Double-bookings in the first week. Irritated clients.</p></div></div>
+<div class="risk"><div class="risk-num">12</div><div><div class="risk-title">Historical Data Accessibility</div><p>FUB history (notes, calls, emails) doesn't live in GHL. You need a plan: export CSV and keep FUB in read-only for 90 days.</p></div></div>
+<div class="risk"><div class="risk-num">13</div><div><div class="risk-title">Bulk Stage Change Limitations</div><p>In FUB you can change the stage of multiple contacts at once. In GHL Bulk Actions exist but with limitations. Verify before assuming equivalence.</p></div></div>
+<div class="risk"><div class="risk-num">14</div><div><div class="risk-title">Email Open/Click Tracking Scope</div><p>GHL only tracks opens on emails sent via Conversations or Workflows, not on direct emails sent from a connected Gmail account.</p></div></div>
+<div class="risk"><div class="risk-num">15</div><div><div class="risk-title">Showcase Integration Verification</div><p>If Showcase sends leads to FUB via Zapier and the Zap disconnects during migration, Showcase leads disappear without anyone noticing for days.</p></div></div>
+</div>
+
+<!-- ══ SECTION C ══ -->
+<div id="sec-C" class="section">
+<h2>Section C: Ideal GHL Architecture for Driscoll-Peca</h2>
+<div class="block teal"><p><strong>Golden rule:</strong> A lead enters ONE pipeline based on their first declared intent. If intent changes, a new opportunity is created in the correct pipeline. The contact doesn't move &mdash; only the opportunity does.</p></div>
+
+<h3>Pipelines</h3>
+<div class="block sky"><h4>Pipeline: Buyer</h4><ul>
+<li>Sources: VIP List, Buyer Guide, Upsizing, Open House, Coming Soon, Buyers</li>
+<li>Stages: New Lead &rarr; A Hot (1-3 mo) &rarr; B Warm (3-6 mo) &rarr; C Cold (6+) &rarr; Nurture &rarr; Active Client &rarr; Pending &rarr; Closed</li>
+<li>On entry: Tag 'intent:buyer', assign via round robin, SMS welcome + email nurture Day 1</li>
+<li>On Active Client: auto-task "Send MLS Search" within 24h</li>
+<li>On Pending: Tag 'status:pending', launch closing checklist automation</li>
+</ul></div>
+<div class="block coral"><h4>Pipeline: Seller</h4><ul>
+<li>Sources: Home Valuation, Seller Guide, Nosey Neighbor</li>
+<li>Stages: New Lead &rarr; A Hot &rarr; B Warm &rarr; C Cold &rarr; Nurture &rarr; Active Client &rarr; Pending &rarr; Closed</li>
+<li>On entry: Tag 'intent:seller', send CMA request email, assign to listing agent</li>
+<li>On Active Client: task "Coordinate listing appointment"</li>
+<li>On Pending: launch transaction coordination checklist</li>
+</ul></div>
+<div class="block purple"><h4>Pipeline: General</h4><ul>
+<li>For non-buyer/seller leads: blog, market reports, Rogue Community, contact forms</li>
+<li>Purpose: long-term nurture until they express buying/selling intent</li>
+<li>Key automation: if they complete a buyer/seller form &rarr; move to correct pipeline automatically</li>
+<li>Simplified stages: New &rarr; Engaged &rarr; Nurture &rarr; Converted</li>
+</ul></div>
+
+<h3>Tag Architecture &mdash; Naming Convention</h3>
+<div class="block amber"><p>Structure: <strong>[category]:[value]</strong> &mdash; consistent throughout the system</p><ul>
+<li>intent:buyer | intent:seller | intent:investor | intent:renting</li>
+<li>source:open-house | source:website | source:facebook-ad | source:referral | source:showcase | source:blog</li>
+<li>status:active | status:nurture | status:dnd | status:closed | status:pending</li>
+<li>segment:vip-list | segment:blog-lead | segment:rogue-community | segment:market-report</li>
+<li>area:kemptville | area:north-gower | area:merrickville | area:manotick | area:eastern-ontario</li>
+<li>property-type:rural | property-type:farm | property-type:waterfront | property-type:luxury</li>
+<li>agent:jaime | agent:deb | agent:trevor | agent:nicole | agent:christine | agent:katie | agent:ron | agent:marufur</li>
+<li>flags:hot-lead | flags:past-client | flags:investor-network | flags:has-agent | flags:isa-qualified</li>
+</ul></div>
+
+<h3>Essential Custom Fields</h3>
+<div class="table-wrap"><table>
+<tr><th>Field</th><th>Type</th><th>Use</th></tr>
+<tr><td>Lead Source (original)</td><td>Dropdown</td><td>First capture source. NEVER overwrite.</td></tr>
+<tr><td>Property Interest Type</td><td>Dropdown</td><td>Rural / Farm / Waterfront / Luxury / Residential</td></tr>
+<tr><td>Timeline to Buy/Sell</td><td>Dropdown</td><td>1-3 mo / 3-6 mo / 6-12 mo / 12+ mo / Unknown</td></tr>
+<tr><td>Pre-Approval Status</td><td>Dropdown</td><td>Not Started / In Progress / Approved / Not Applicable</td></tr>
+<tr><td>Pre-Approval Amount</td><td>Currency</td><td>To segment buyers by purchasing capacity</td></tr>
+<tr><td>Area of Interest</td><td>Multi-select</td><td>Kemptville / North Gower / Manotick / Merrickville / etc.</td></tr>
+<tr><td>Bot Conversation Summary</td><td>Long Text</td><td>Auto-populated by chatbot after each conversation</td></tr>
+<tr><td>Open House Attended</td><td>Text/Date</td><td>Which open house and when</td></tr>
+<tr><td>Listing Appointment Date</td><td>Date</td><td>For sellers: listing appointment date</td></tr>
+<tr><td>Referred By</td><td>Text</td><td>For referral tracking and thank you gifts</td></tr>
+<tr><td>Client Portal Access</td><td>Checkbox</td><td>Do they have access to the MLS search portal?</td></tr>
+</table></div>
+
+<h3>Smart Views &mdash; Smart List Equivalents</h3>
+<div class="block teal"><p>These views must be saved before go-live. They are the agents' daily work tool.</p><ul>
+<li>&#128308; <strong>HOT TODAY</strong>: Buyer Pipeline + Stage A Hot + Last Activity &gt; 3 days</li>
+<li>&#128993; <strong>NEEDS FOLLOW-UP</strong>: Any pipeline + Last Activity &gt; 7 days + Active stage (not Closed/Nurture)</li>
+<li>&#128222; <strong>CALL BACK TODAY</strong>: Tag 'callback-today' (manual or via workflow)</li>
+<li>&#127381; <strong>NEW THIS WEEK</strong>: Created date last 7 days + Stage New Lead</li>
+<li>&#127968; <strong>ACTIVE CLIENTS</strong>: Stage Active Client in Buyer or Seller pipeline</li>
+<li>&#128164; <strong>COLD NURTURE</strong>: Stage C Cold + Last Activity &gt; 30 days</li>
+<li>&#9200; <strong>PENDING</strong>: Stage Pending in any pipeline</li>
+<li>&#127919; <strong>MY LEADS</strong>: Assigned to = current user (configure per agent)</li>
+</ul></div>
+
+<h3>Critical Automations</h3>
+<div class="table-wrap"><table>
+<tr><th>Automation</th><th>Trigger</th><th>Key Actions</th><th>Priority</th></tr>
+<tr><td>New Lead Welcome</td><td>Form submit any source</td><td>Tag source, assign agent, SMS Day 0, email Day 1</td><td><span class="badge red">Critical</span></td></tr>
+<tr><td>Lead Inactivity Alert</td><td>No activity 7 days in active stage</td><td>Agent notification + auto-task</td><td><span class="badge red">Critical</span></td></tr>
+<tr><td>Appointment Booked</td><td>Calendar booking confirmed</td><td>Confirmation email, SMS reminder, pre-appt task</td><td><span class="badge red">Critical</span></td></tr>
+<tr><td>Open House Follow-Up</td><td>Tag source:open-house added</td><td>SMS in 2h, email Day 1, call task Day 3</td><td><span class="badge red">Critical</span></td></tr>
+<tr><td>Chatbot Escalation</td><td>Bot requests human agent</td><td>Immediate notification to assigned agent</td><td><span class="badge red">Critical</span></td></tr>
+<tr><td>Stage Change Notifications</td><td>Pipeline stage change</td><td>Notification to team lead + agent</td><td><span class="badge yellow">High</span></td></tr>
+<tr><td>Pending to Closed Won</td><td>Stage &rarr; Closed Won</td><td>Tag past-client, referral sequence, request Google review</td><td><span class="badge yellow">High</span></td></tr>
+<tr><td>Appointment No Show</td><td>Appointment passed + no show</td><td>Re-scheduling email, agent notification</td><td><span class="badge yellow">High</span></td></tr>
+<tr><td>Cold Lead Re-Engagement</td><td>Last activity 30+ days + Cold stage</td><td>3-touchpoint email sequence</td><td><span class="badge blue">Medium</span></td></tr>
+<tr><td>Referral Tracking</td><td>Tag flags:referred-by added</td><td>Agent task: thank you note / gift card</td><td><span class="badge blue">Medium</span></td></tr>
+</table></div>
+</div>
+
+<!-- ══ SECTION D ══ -->
+<div id="sec-D" class="section">
+<h2>Section D: Plan to Eliminate External Tools</h2>
+
+<h3>Priority 1: Curb Hero &rarr; GHL Native Forms</h3>
+<div class="block coral"><h4>Can it be done natively in GHL?</h4><p>Yes, mostly. GHL has a Form Builder with custom fields, direct pipeline integration, and notifications. The iPad experience at open houses can be replicated with a GHL form on a dedicated landing page.</p></div>
+<div class="table-wrap"><table>
+<tr><th>Curb Hero Feature</th><th>GHL Equivalent</th><th>Decision</th></tr>
+<tr><td>Registration form on tablet</td><td>GHL Form on mobile-first landing page</td><td><span class="badge green">Replace</span></td></tr>
+<tr><td>Name/email/phone capture</td><td>Standard GHL Form fields</td><td><span class="badge green">Replace</span></td></tr>
+<tr><td>Automatic post-visit follow-up</td><td>GHL Workflow post-form</td><td><span class="badge green">Replace</span></td></tr>
+<tr><td>Custom branding</td><td>GHL Form + custom CSS or Funnel page</td><td><span class="badge green">Replace</span></td></tr>
+<tr><td>CRM sync</td><td>GHL is the CRM &mdash; native connection</td><td><span class="badge green">Replace</span></td></tr>
+<tr><td>Attendance statistics</td><td>GHL Reporting + tag per open house</td><td><span class="badge yellow">Partial</span></td></tr>
+<tr><td>QR code check-in</td><td>External QR (qr.io free) pointing to form URL</td><td><span class="badge yellow">Workaround</span></td></tr>
+</table></div>
+<div class="block teal"><h4>Open House setup without Curb Hero &mdash; step by step:</h4><ul>
+<li>1. Sites &rarr; Forms &rarr; + New Form. Fields: Name, Email, Phone, Pre-approved?, Working with agent?, What brought you today?</li>
+<li>2. Hidden fields: lead_source = "open-house" and property_address = "property address"</li>
+<li>3. Sites &rarr; Funnels/Pages &rarr; new mobile-first page with logo + form + confirmation message</li>
+<li>4. Post-form workflow: Tag source:open-house &rarr; Add to Buyer Pipeline &rarr; Notify agent &rarr; SMS in 2h &rarr; Email Day 1 &rarr; Call task Day 3</li>
+<li>5. Free QR code at qr.io pointing to the URL. Print 8x10 and laminate for the sign-in table.</li>
+<li>6. For each different open house: duplicate the page, change only the hidden property_address field, generate a new QR.</li>
+</ul></div>
+
+<h3>Priority 2: Zapier &mdash; What to Remove, What to Keep</h3>
+<div class="table-wrap"><table>
+<tr><th>Current Zap</th><th>Remove?</th><th>Alternative</th></tr>
+<tr><td>Facebook Lead Ad &rarr; FUB</td><td><span class="badge red">Remove</span></td><td>GHL has native Facebook Ad Integration. Connect directly.</td></tr>
+<tr><td>Website form &rarr; FUB</td><td><span class="badge red">Remove</span></td><td>Webhook or direct GHL Form on the website.</td></tr>
+<tr><td>Curb Hero &rarr; FUB</td><td><span class="badge red">Remove</span></td><td>Curb Hero is being eliminated completely.</td></tr>
+<tr><td>Notifications to Jaime/Deb</td><td><span class="badge red">Remove</span></td><td>GHL Workflows send internal emails and SMS directly.</td></tr>
+<tr><td>Showcase &rarr; FUB</td><td><span class="badge yellow">Evaluate</span></td><td>Check if Showcase has native GHL integration before deciding.</td></tr>
+<tr><td>Calendly &rarr; FUB</td><td><span class="badge yellow">Evaluate</span></td><td>If migrating to GHL native Calendar, Zapier can be removed.</td></tr>
+<tr><td>Gmail &rarr; FUB threads</td><td><span class="badge mint">Keep for now</span></td><td>GHL connects Gmail via SMTP/IMAP. Verify sync before removing.</td></tr>
+</table></div>
+
+<h3>Priority 3: FUB Sunset &mdash; 4-Phase Plan</h3>
+<div class="block purple"><ul>
+<li><strong>PHASE 1 (Days 1-30):</strong> GHL receives all new leads. FUB continues operating for existing active leads.</li>
+<li><strong>PHASE 2 (Days 31-60):</strong> Migrate Active Client + Pending to GHL. Agents work in both systems. FUB as reference.</li>
+<li><strong>PHASE 3 (Days 61-90):</strong> FUB in read-only mode. All new processes exclusively in GHL.</li>
+<li><strong>PHASE 4 (Day 90+):</strong> Export complete FUB history &rarr; archive in Google Drive &rarr; cancel subscription.</li>
+<li><strong>CRITICAL before canceling:</strong> Export contacts, notes, call logs, email history, action plan templates.</li>
+</ul></div>
+</div>
+
+<!-- ══ SECTION E ══ -->
+<div id="sec-E" class="section">
+<h2>Section E: Internal Course &mdash; Modules by Profile</h2>
+<p>Designed to be recorded as screen recordings. Each module is self-contained. Quick wins first to drive early adoption.</p>
+
+<div class="profile-block teal">
+  <h3>Agents &mdash; Frontend</h3>
+  <p>Everything they need to work their leads daily without relying on technical support.</p>
+</div>
+<div class="mod"><div class="mod-header"><span class="mod-tag teal">MOD 01</span><span class="mod-title">GHL Orientation: The UI That Matters to You</span><span class="mod-time">15 min</span></div><p>Contacts vs Conversations vs Opportunities. Where your daily work lives. Immediate quick wins.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Navigate without getting lost in 5 minutes.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag teal">MOD 02</span><span class="mod-title">Your Custom Views (The New Smart Lists)</span><span class="mod-time">20 min</span></div><p>HOT TODAY, NEEDS FOLLOW-UP, MY LEADS. How each saved filter works. How they update in real time.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Work list configured and ready to use.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag teal">MOD 03</span><span class="mod-title">Pipeline: Moving Leads Correctly</span><span class="mod-time">15 min</span></div><p>When to change the stage. How to add a note when moving. What automations fire automatically.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>First lead moved with correct note.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag teal">MOD 04</span><span class="mod-title">Conversations: The Unified Inbox</span><span class="mod-time">20 min</span></div><p>SMS + Email + Chat + Facebook + Instagram in one place. How to respond per channel. Automation smart stop.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>First SMS and email sent from GHL.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag teal">MOD 05</span><span class="mod-title">Notes, Tasks and Follow-ups</span><span class="mod-time">15 min</span></div><p>Standard call note format. Creating tasks with due dates. Viewing overdue tasks. Note vs activity difference.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Complete call log in under 2 minutes.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag teal">MOD 06</span><span class="mod-title">Phone &amp; Calls from GHL</span><span class="mod-time">20 min</span></div><p>Click to call from iPad/desktop. VM Drop: Warm and Cold. Automatic call recording. Lead Connector mobile app.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>First complete call with VM Drop from Lead Connector.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag teal">MOD 07</span><span class="mod-title">Calendar &amp; Appointments</span><span class="mod-time">15 min</span></div><p>Viewing your calendar. Confirming and rescheduling. Google Calendar sync. What happens on a no-show.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Appointment confirmed and visible in Google Cal.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag teal">MOD 08</span><span class="mod-title">Common Agent Mistakes</span><span class="mod-time">10 min</span></div><p>Not moving the stage. Creating a duplicate contact. Replying outside Conversations. Forgetting to add a note. Deleting an active workflow.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>List of errors to avoid from Day 1.</div></div>
+
+<div class="profile-block sky">
+  <h3>Team Leads &mdash; Jaime + Deb</h3>
+  <p>Full team visibility, quality control, and strategic decisions from GHL.</p>
+</div>
+<div class="mod"><div class="mod-header"><span class="mod-tag sky">MOD 01</span><span class="mod-title">Team Lead Dashboard</span><span class="mod-time">15 min</span></div><p>Native reports. Activity by agent. Pipeline health. How to read the system without asking anyone.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>First autonomous team check-in.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag sky">MOD 02</span><span class="mod-title">Full Team Pipeline Visibility</span><span class="mod-time">10 min</span></div><p>Filter by agent. View leads without activity. View pending transactions. TEAM PIPELINE HEALTH view.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>At-risk leads identified in under 5 minutes.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag sky">MOD 03</span><span class="mod-title">Reassignment &amp; Agent Management</span><span class="mod-time">15 min</span></div><p>Reassign lead with automatic notification. Add internal note. View complete lead history.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Reassignment documented correctly in under 2 minutes.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag sky">MOD 04</span><span class="mod-title">Reviewing Active Automations</span><span class="mod-time">20 min</span></div><p>See which workflows are running on a contact. Pause a sequence. Verify the bot worked.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Full lead audit from entry to today.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag sky">MOD 05</span><span class="mod-title">Weekly Reporting &amp; Key Metrics</span><span class="mod-time">20 min</span></div><p>Source attribution. Conversion by stage. Agent activity report. Setting up automated weekly report.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>First weekly report generated without help.</div></div>
+
+<div class="profile-block purple">
+  <h3>Admin / Ops &mdash; Tania + Alexandra</h3>
+  <p>Full system control, configuration, integrations, and preventive maintenance.</p>
+</div>
+<div class="mod"><div class="mod-header"><span class="mod-tag purple">MOD 01</span><span class="mod-title">GHL Backend: Settings That Matter</span><span class="mod-time">20 min</span></div><p>Timezone, email domain SPF/DKIM, A2P phone numbers, sub-account settings.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Initial configuration checklist completed.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag purple">MOD 02</span><span class="mod-title">Workflow Builder: Anatomy &amp; Logic</span><span class="mod-time">30 min</span></div><p>Triggers, conditions, actions, delays, If/Else. How to test. How to debug. Most common errors.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Simple workflow created, tested, and documented.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag purple">MOD 03</span><span class="mod-title">Forms &amp; Landing Pages</span><span class="mod-time">25 min</span></div><p>Create native form. Hidden fields for UTMs and source tracking. Complete end-to-end flow testing.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Open House form live in under 45 minutes.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag purple">MOD 04</span><span class="mod-title">Tags &amp; Custom Fields: Architecture</span><span class="mod-time">20 min</span></div><p>Naming convention. Creating and auditing fields. Cleaning unused tags. Monthly maintenance.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Tag audit completed with naming convention applied.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag purple">MOD 05</span><span class="mod-title">Chatbot: Configuration &amp; Maintenance</span><span class="mod-time">25 min</span></div><p>Review bot conversations. Modify responses. View metrics. When and how it escalates to a human.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>First bot modification without breaking the flow.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag purple">MOD 06</span><span class="mod-title">Integrations: Facebook, Website, Zapier</span><span class="mod-time">30 min</span></div><p>Connect Facebook Ad Account. Webhook on AgentFire website. Audit active Zaps. Which to remove.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Complete integration map documented.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag purple">MOD 07</span><span class="mod-title">User Management &amp; Permissions</span><span class="mod-time">15 min</span></div><p>Create user. Assign role and permissions. Configure phone and calendar. Onboard new agent in under 30 min.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>New agent fully onboarded.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag purple">MOD 08</span><span class="mod-title">Data Hygiene &amp; Deduplication</span><span class="mod-time">20 min</span></div><p>Find and correctly merge duplicates. Clean contacts without pipeline. Monthly SOP.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Clean database before go-live.</div></div>
+
+<div class="profile-block amber">
+  <h3>Internal Tech Support</h3>
+  <p>Diagnose before escalating. The resource everyone turns to when something breaks.</p>
+</div>
+<div class="mod"><div class="mod-header"><span class="mod-tag amber">MOD 01</span><span class="mod-title">Diagnostic Framework: The First 5 Steps</span><span class="mod-time">20 min</span></div><p>Did the workflow fire? Does the contact have the tag? Did the form capture the field? Is the A2P number active?</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Resolve 80% of problems without escalating to GHL Support.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag amber">MOD 02</span><span class="mod-title">Workflow Execution Log: Reading the History</span><span class="mod-time">25 min</span></div><p>How to access the log. Interpreting COMPLETED, SKIPPED, FAILED, PAUSED. Differences and solutions.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Identify why an SMS wasn't sent in under 3 minutes.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag amber">MOD 03</span><span class="mod-title">Common Problems &amp; Their Solutions</span><span class="mod-time">30 min</span></div><p>Lead didn't enter the pipeline. Workflow didn't fire. Bot didn't respond on Facebook. SMS bounced. Email in spam.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Top 10 error playbook documented and accessible.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag amber">MOD 04</span><span class="mod-title">How to Escalate to GHL Support Correctly</span><span class="mod-time">10 min</span></div><p>Complete ticket template. Support channels by speed. GHL Community. YouTube channel.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>First support ticket properly documented.</div></div>
+<div class="mod"><div class="mod-header"><span class="mod-tag amber">MOD 05</span><span class="mod-title">Monthly Preventive Maintenance</span><span class="mod-time">20 min</span></div><p>Data hygiene, workflow audit, tag cleanup, pipeline health, integration verification. First Monday of each month.</p><div class="mod-win"><span class="mod-win-lbl">Quick Win:</span>Monthly maintenance SOP documented and executable.</div></div>
+</div>
+
+<!-- ══ SECTION F ══ -->
+<div id="sec-F" class="section">
+<h2>Section F: 30 / 60 / 90 Day Roadmap</h2>
+<div class="block amber"><h4>Guiding principle:</h4><p>No big bang migration. The team won't adopt systems that make them lose productivity all at once. The 30-day parallel migration is the best protection against rejection.</p></div>
+
+<div class="phase teal">
+  <div class="phase-header"><span class="phase-num">30</span><span class="phase-title">Foundation &amp; Audit</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 1: Full FUB audit. Export: contacts, notes, history, action plans, active smart lists.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 1: Document all active FUB workflows with screenshots.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 1: Audit 34 tags. Propose naming convention. Approve with Jaime and Deb.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 2: Configure GHL: custom fields, tags, pipelines, user permissions, SPF/DKIM.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 2: Build Tier 1 critical automations: welcome, inactivity alert, appointment booked.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 3: Record Admin/Ops modules first. Full testing. QA checklist per integration point.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 4: Eliminate Curb Hero. Open House form live in GHL. Native Facebook Ad integration.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 4: Beta training with 1-2 volunteer agents. Feedback session before go-live.</span></div>
+  <div class="phase-item goal"><span class="phase-dot">&#127919;</span><span>Day 30: GHL system configured, tested, and receiving new leads.</span></div>
+</div>
+
+<div class="phase sky">
+  <div class="phase-header"><span class="phase-num">60</span><span class="phase-title">Migration &amp; Training</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 5: Record Agent modules. Live training session 90 min. Migrate Active Client + Pending.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 6: FUB + GHL in parallel. Short daily standup: what didn't work today? Problem log.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 6: Record Team Lead modules. Dedicated training session for Jaime and Deb.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 7: Resolve all logged issues. Optimize workflows with real feedback. Build Tier 2 automations.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 7: Eliminate Zapier where no longer needed. Document the ones being kept.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 8: FUB goes to read-only. Record Tech Support modules. First reporting review with Jaime.</span></div>
+  <div class="phase-item goal"><span class="phase-dot">&#127919;</span><span>Day 60: Full team working in GHL. FUB as historical reference only.</span></div>
+</div>
+
+<div class="phase coral">
+  <div class="phase-header"><span class="phase-num">90</span><span class="phase-title">Optimization &amp; FUB Sunset</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 9-10: Optimize based on 30 days of real data. Source attribution analysis.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 10: Adjust pipelines. Build automated weekly report for Jaime and Deb.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 11: Export complete FUB history &rarr; archive in Google Drive &rarr; cancel subscription.</span></div>
+  <div class="phase-item"><span class="phase-dot">&middot;</span><span>Wk 12: Full system review. Q2 planning. Internal results presentation.</span></div>
+  <div class="phase-item goal"><span class="phase-dot">&#127919;</span><span>Day 90: FUB canceled. GHL as the single system. Autonomous team.</span></div>
+</div>
+</div>
+
+<!-- ══ SECTION G ══ -->
+<div id="sec-G" class="section">
+<h2>Section G: Top 25 Things That Would Break the Migration</h2>
+<p>Items marked <span class="badge red">Critical</span> are blockers: if not resolved before go-live, the migration fails.</p>
+
+<div class="risk"><div class="risk-num">01</div><div><div class="risk-title">SPF/DKIM not configured <span class="badge red">Critical</span></div><p>All nurture emails go to spam from Day 1. Agents think GHL doesn't work. Adoption dies in the first week.</p></div></div>
+<div class="risk"><div class="risk-num">02</div><div><div class="risk-title">A2P number not verified <span class="badge red">Critical</span></div><p>SMS don't deliver. The welcome workflow silently fails for every new lead. Zero automatic follow-up.</p></div></div>
+<div class="risk"><div class="risk-num">03</div><div><div class="risk-title">Smart Lists not replaced <span class="badge red">Critical</span></div><p>Agents arrive at GHL, don't know where to start, go back to FUB. Migration fails for lack of a daily work tool.</p></div></div>
+<div class="risk"><div class="risk-num">04</div><div><div class="risk-title">Round Robin misconfigured <span class="badge red">Critical</span></div><p>All leads go to the same agent. First one saturated, others with no work. Team drama from Day 1.</p></div></div>
+<div class="risk"><div class="risk-num">05</div><div><div class="risk-title">Action Plans not rebuilt <span class="badge red">Critical</span></div><p>Leads entering the first days receive no nurture. Hot leads are lost because no sequence is running.</p></div></div>
+<div class="risk"><div class="risk-num">06</div><div><div class="risk-title">Duplicates during migration <span class="badge red">Critical</span></div><p>Poorly imported CSV creates thousands of duplicates. Database contaminated and cleanup takes weeks.</p></div></div>
+<div class="risk"><div class="risk-num">07</div><div><div class="risk-title">FUB opt-outs not migrated <span class="badge red">Critical</span></div><p>Contacts who requested no contact receive SMS/email from GHL. CASL violation in Canada. Legal consequences.</p></div></div>
+<div class="risk"><div class="risk-num">08</div><div><div class="risk-title">Chatbot without clear escalation path <span class="badge red">Critical</span></div><p>Bot can't resolve. Lead waits. No agent was notified. Lead goes to another brokerage.</p></div></div>
+<div class="risk"><div class="risk-num">09</div><div><div class="risk-title">Automations firing on old leads <span class="badge red">Critical</span></div><p>FUB import triggers a workflow on 2,000 historical contacts. 2,000 "Welcome to our list" SMS to closed leads.</p></div></div>
+<div class="risk"><div class="risk-num">10</div><div><div class="risk-title">No rollback plan <span class="badge red">Critical</span></div><p>If FUB is already canceled and something goes badly wrong in week 1, there's no going back. Document Plan B before go-live.</p></div></div>
+<div class="risk"><div class="risk-num">11</div><div><div class="risk-title">Google Calendar not synced <span class="badge yellow">High</span></div><p>Double-bookings in the first week. Irritated clients. Damage to team reputation.</p></div></div>
+<div class="risk"><div class="risk-num">12</div><div><div class="risk-title">Permissions misconfigured <span class="badge yellow">High</span></div><p>Agents see other agents' leads. Confusion, overlap, and internal conflicts.</p></div></div>
+<div class="risk"><div class="risk-num">13</div><div><div class="risk-title">Lead source not captured <span class="badge yellow">High</span></div><p>All leads arrive without source. Marketing decisions made blind. ROI impossible to measure.</p></div></div>
+<div class="risk"><div class="risk-num">14</div><div><div class="risk-title">Training not recorded before go-live <span class="badge yellow">High</span></div><p>Agents with questions on Day 1 with no resource. Tania and Alexandra in manual support all day.</p></div></div>
+<div class="risk"><div class="risk-num">15</div><div><div class="risk-title">Showcase integration not verified <span class="badge yellow">High</span></div><p>If the Zap disconnects, Showcase leads disappear without anyone noticing for days.</p></div></div>
+<div class="risk"><div class="risk-num">16</div><div><div class="risk-title">Workflow timezone misconfigured <span class="badge yellow">High</span></div><p>Workflow in UTC. Welcome SMS arrives at 3am Ontario time. Disastrous first impression.</p></div></div>
+<div class="risk"><div class="risk-num">17</div><div><div class="risk-title">Historical leads without visible history <span class="badge yellow">High</span></div><p>FUB lead imported without notes. Agent calls without knowing they've already been contacted 10 times. Terrible client experience.</p></div></div>
+<div class="risk"><div class="risk-num">18</div><div><div class="risk-title">Pipeline not mapped to real process <span class="badge yellow">High</span></div><p>Stages that don't reflect how the team actually works. Nobody moves them. Pipeline becomes useless within days.</p></div></div>
+<div class="risk"><div class="risk-num">19</div><div><div class="risk-title">Calendar booking links not tested end-to-end <span class="badge yellow">High</span></div><p>Link doesn't work on mobile or doesn't capture all required fields. Lost appointments.</p></div></div>
+<div class="risk"><div class="risk-num">20</div><div><div class="risk-title">Team Leads without reporting training <span class="badge yellow">High</span></div><p>Jaime and Deb continue requesting data manually. The CRM's value isn't perceived at management level.</p></div></div>
+<div class="risk"><div class="risk-num">21</div><div><div class="risk-title">Bot not tested on Facebook/Instagram <span class="badge yellow">High</span></div><p>Known and documented issue. Not resolved before go-live, it frustrates the team from Day 1.</p></div></div>
+<div class="risk"><div class="risk-num">22</div><div><div class="risk-title">Tags without naming convention <span class="badge blue">Medium</span></div><p>In 60 days the system has 150 unstructured tags. Impossible to segment. Agents invent tags on the spot.</p></div></div>
+<div class="risk"><div class="risk-num">23</div><div><div class="risk-title">Email sending limits not reviewed <span class="badge blue">Medium</span></div><p>GHL has hourly/daily limits. A bulk campaign without verifying blocks all team emails.</p></div></div>
+<div class="risk"><div class="risk-num">24</div><div><div class="risk-title">VM Drop not recorded <span class="badge blue">Medium</span></div><p>Agents don't know how to leave a professional voicemail. They lose the momentum of first contact.</p></div></div>
+<div class="risk"><div class="risk-num">25</div><div><div class="risk-title">No SOP for onboarding a new agent <span class="badge blue">Medium</span></div><p>When a new agent joins, they improvise. Permissions are misconfigured. Inconsistent experience.</p></div></div>
+</div>
+
+<!-- ══ SECTION H ══ -->
+<div id="sec-H" class="section">
+<h2>Section H: Honest Recommendations</h2>
+
+<h3>Where GHL Clearly Wins</h3>
+<div class="block teal"><ul>
+<li>Omnichannel Conversations: SMS, email, chat, FB, Instagram in one inbox. FUB is fundamentally email-first.</li>
+<li>Workflow Builder: enormously more powerful. Complex conditional logic that FUB simply cannot do.</li>
+<li>Native Landing Pages and Funnels. FUB doesn't have this. Eliminates an external tool directly.</li>
+<li>Native Chatbot / AI Agent with conditional routing by page source.</li>
+<li>Full SMS and Voice: A2P, VM drop, call recording all within the same system.</li>
+<li>Cost at scale: as the team grows, GHL is significantly cheaper than FUB + satellite tools.</li>
+<li>Sub-accounts: perfect architecture for the Rogue Community program and future expansion.</li>
+<li>Campaign reporting: connects ad spend to pipeline conversions. FUB doesn't do this natively.</li>
+</ul></div>
+
+<h3>Where FUB Still Wins</h3>
+<div class="block coral"><ul>
+<li>Smart Lists as a daily work tool: FUB does them better. Simple, visual, always updated.</li>
+<li>Agent UI speed: FUB designed for real estate. GHL designed for marketers. More daily operational friction.</li>
+<li>Learning curve: FUB in days. GHL in weeks. Without structured training, rejection is inevitable.</li>
+<li>Lead Profile view: FUB shows the most relevant lead info more clearly on the initial view.</li>
+<li>Pre-built integrations with real estate portals.</li>
+<li>Real estate-focused support. GHL Support is known for being inconsistent in response speed.</li>
+</ul></div>
+
+<h3>Where to Adapt Instead of Copy</h3>
+<div class="block amber"><ul>
+<li><strong>Smart Lists:</strong> DON'T replicate exactly. Use Custom Views + proactive workflows that bring leads to the agent's attention.</li>
+<li><strong>Action Plans:</strong> DON'T copy FUB's format. Leverage conditionals, behavior-based branching, and intelligent delays.</li>
+<li><strong>Pipeline Stages:</strong> DON'T copy FUB stages without reviewing them. Opportunity to redesign the actual sales process.</li>
+<li><strong>Email threads:</strong> DON'T try to replicate FUB's email behavior. Omnichannel Conversations is objectively better.</li>
+<li><strong>Notifications:</strong> GHL can do intelligent routing: if not responded in 5 min &rarr; notify team lead. Use this.</li>
+<li><strong>Reporting:</strong> Don't ask for the same FUB reports. Design new ones that leverage what GHL can measure that FUB couldn't.</li>
+</ul></div>
+
+<div class="block purple"><h4>The most honest advice:</h4><p>GHL migrations fail in real estate teams not for technical reasons. They fail because the system feels slower for the agent's daily work. If you don't solve that with deep training and Custom Views equivalent to Smart Lists, agents go back to FUB or direct email.</p><p style="margin-top:10px">The most important investment in this migration is not the configuration: it's the training. Designate one person as the internal GHL Champion who resolves problems in real time during the first 30 days. Without this resource, adoption drops below 50% even if everything is technically perfect.</p></div>
+<div class="block teal"><h4>About timing:</h4><p>Don't migrate during peak season. If peak is spring/summer, start in October-November to be stable in January. Migrating with 10+ active transactions simultaneously is a recipe for chaos and permanent system rejection.</p></div>
+<div class="block sky"><h4>About the course investment:</h4><p>The recorded internal course is the highest-ROI asset of this migration. An agent who watches the 20-minute Custom Views module before touching the system is worth 10 times more than one who arrives on Day 1 unprepared. Record it before go-live, without exception.</p></div>
+</div>
+
+<!-- ══ SECTION FAQ ══ -->
+<div id="sec-FAQ" class="section">
+<h2>FAQ: Detailed Questions by Profile</h2>
+<p>Exact operational answers for the real questions each profile will have during and after the migration.</p>
+
+<div class="faq-profile">
+<div class="faq-label teal">Agents</div>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>Where are my Smart Lists? I don't see anything similar when I open GHL.</summary>
+<div class="faq-a">
+<p>FUB Smart Lists don't exist as a native concept in GHL, and that's the most important mental adjustment you need to make. Your equivalent tool is called <strong>Custom Views</strong> inside Contacts and inside each Pipeline.</p>
+<p>What we built before you arrived: the views equivalent to your most-used Smart Lists, saved and named the same: HOT TODAY, NEEDS FOLLOW-UP, NEW THIS WEEK, MY LEADS, ACTIVE CLIENTS, PENDING TRANSACTIONS.</p>
+<p>How to access them: left menu &rarr; Contacts &rarr; filter icon top right &rarr; saved views. To work by pipeline: Opportunities &rarr; choose the pipeline &rarr; filter by Stage &rarr; save view.</p>
+<p>The key difference: GHL is more proactive. Instead of you going to find who needs contact, the system creates automatic tasks telling you who to call today.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I move a lead to a different stage? Is there anything I need to do besides drag it?</summary>
+<div class="faq-a">
+<p>Yes, there are steps you shouldn't skip. How to move: Opportunities &rarr; drag the card to the new stage, OR open the lead &rarr; click the current stage to change it.</p>
+<p><strong>What you MUST do in addition:</strong></p>
+<p>1. Add a brief note explaining why it changed. Example: "Moved to A Hot because they confirmed pre-approval and 60-day timeline." Essential for the team lead to understand context.</p>
+<p>2. Check if an automatic task was created. When you move to Active Client, a task is created automatically. Find it in the Tasks tab.</p>
+<p>3. DON'T move leads to Closed Lost without adding a reason in the notes. It's strategic information for the team.</p>
+<p><strong>Automations that fire on stage change:</strong> New Lead &rarr; Engaged cancels the welcome sequence if they already replied. Any stage &rarr; Pending notifies the team lead and starts the transaction checklist. Any stage &rarr; Closed Won starts the referral sequence and Google review request.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I reply to a lead who texted me? Is it different from replying to an email?</summary>
+<div class="faq-a">
+<p>No, that's one of the best parts of GHL: everything is in the same place. Go to <strong>Conversations</strong> in the left menu. Unified inbox: SMS, email, Facebook, Instagram, website chat, all together. Each conversation shows the channel with an icon.</p>
+<p>To reply via SMS: open the conversation &rarr; SMS channel is already selected &rarr; type and send. If you want to change the reply channel, there's a channel selector before the text field.</p>
+<p>Important details: if the lead has an active automatic nurture sequence and you reply manually, GHL pauses the sequence to avoid sending duplicate messages. That behavior is called "smart stop" and is configured in the workflows. Always reply from Conversations, not from your connected Gmail, so everything stays recorded in the system.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>Can I call directly from GHL? How does Voicemail Drop work?</summary>
+<div class="faq-a">
+<p>Yes, and it's one of the most powerful features. From iPad or desktop: go to the contact &rarr; phone button &rarr; click to call. The call goes out from the team number assigned to you. It records automatically.</p>
+<p>From mobile: use the Lead Connector app.</p>
+<p><strong>VM Drop:</strong> a pre-recorded message you deposit when a lead's phone goes to voicemail, without it ringing even once. The lead sees they have a voicemail but you didn't have to speak. How to use it: you detect it's going to voicemail &rarr; tap "Drop Voicemail" &rarr; select the recording &rarr; hang up. The VM deposits itself.</p>
+<p>We have two configured: <strong>VM Warm</strong> for leads with history (more personal), <strong>VM Cold</strong> for first contact (introduces the team).</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I add a call note? How much detail should I include?</summary>
+<div class="faq-a">
+<p>Go to the contact &rarr; Notes tab &rarr; "+ Add Note". You can also add a note from Conversations directly on that person's thread.</p>
+<p><strong>Standardized format for the team:</strong></p>
+<p>[DATE] Call - [approx duration]<br>Result: answered / no answer / left VM<br>Summary: what they said, what they asked, what you promised<br>Next step: what you'll do and when<br>Alert: something important the team should know</p>
+<p>Why it matters: when Jaime or Deb review a lead, this note lets them understand the context in 20 seconds without asking you. It also protects you if there's a misunderstanding about who said what. GHL records calls automatically; the note is the human summary on top of that.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I know if an automation is running on one of my leads?</summary>
+<div class="faq-a">
+<p>Go to the contact &rarr; "Automations" or "Workflows" tab. You'll see all active workflows on that contact, what step they're on, and when the last message was sent.</p>
+<p><strong>Statuses:</strong> Active = running, waiting for next step. Completed = finished normally. Cancelled = stopped. Failed = something went wrong.</p>
+<p><strong>When to pause manually:</strong> the lead said they don't want more automated messages, the lead became an active client and nurture no longer applies, the lead is in active negotiation.</p>
+<p>How to pause: Automations tab on the contact &rarr; click on the active workflow &rarr; Pause or Remove from Workflow. Pause is reversible. Remove is not.</p>
+</div></details>
+</div>
+
+<div class="faq-profile">
+<div class="faq-label sky">Team Leads &mdash; Jaime + Deb</div>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I quickly see what's happening with the whole team's pipeline without asking each agent?</summary>
+<div class="faq-a">
+<p>This is exactly GHL's superpower over FUB for team leads: 360-degree visibility without depending on manual updates.</p>
+<p>Opportunities &rarr; select the pipeline &rarr; by default you see all opportunities from all agents. Filter by agent using "Assigned To." The Kanban view instantly shows how many leads are in each stage and which have been stuck the longest.</p>
+<p><strong>Recommended views for Jaime and Deb:</strong> TEAM PIPELINE HEALTH: all pipelines + Last Activity &gt; 5 days + Stage not Nurture/Closed. PENDING TRANSACTIONS: Stage Pending in any pipeline. NEW LEADS THIS WEEK: Created date last 7 days.</p>
+<p>Automated weekly report: workflow configured to send a summary email to Jaime and Deb every Monday at 8am. Includes: new leads by source, leads by stage by agent, pending transactions, closed this week.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I reassign a lead from one agent to another? Is it automatically notified?</summary>
+<div class="faq-a">
+<p>1. Open the contact. 2. "Assigned To" top right &rarr; click the name &rarr; select the new agent. 3. The change saves immediately.</p>
+<p><strong>Automatic notifications configured:</strong> the new agent receives SMS and email with lead context. The previous agent is notified of the reassignment. An automatic note is added to the contact: "Lead reassigned from [A] to [B] on [date]."</p>
+<p>Best practices: always add a manual note explaining the reason. Verify that automations aren't still going out with the previous agent's name. If there are scheduled appointments, reassign those manually in the calendar.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>Can I see the complete history of a lead including which automations ran?</summary>
+<div class="faq-a">
+<p>Yes, and GHL is notably better than FUB for this.</p>
+<p><strong>Activity tab:</strong> chronological timeline of everything. Every email, SMS, call, stage change, note, task, workflow executed. All with timestamps.</p>
+<p><strong>Conversations tab:</strong> the actual communication thread with the lead, in order.</p>
+<p><strong>Automations tab:</strong> active, completed, or failed workflows on this contact. Click each one to see exactly which step it's on.</p>
+<p>For agent QA: open 3-5 leads from an agent &rarr; Activity tab. In 10 minutes you have a clear picture of: are they adding notes after calls? Moving stages? How much time between contacts? This replaces the need for daily verbal check-ins.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>Where do the leads that actually close come from?</summary>
+<div class="faq-a">
+<p>This is the most important marketing question and GHL gives you the data to answer it with certainty.</p>
+<p>Reporting &rarr; Attribution Report. Filter by date range. You see: leads by source, opportunities, closed deals, revenue by source.</p>
+<p>The metric that matters most isn't volume but <strong>conversion rate by source</strong>. Which source produces leads that CLOSE?</p>
+<p>Expected example: Open House has high volume but low conversion rate. Referrals has low volume but high conversion rate. That determines where the team invests time. GHL can show you exact cost-per-close if you connect Facebook Ads spend.</p>
+</div></details>
+</div>
+
+<div class="faq-profile">
+<div class="faq-label purple">Admin / Ops &mdash; Tania + Alexandra</div>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>What's the correct anatomy of a workflow? What do I need to understand first?</summary>
+<div class="faq-a">
+<p>A workflow has 4 components. Master them in this order:</p>
+<p><strong>1. TRIGGER:</strong> what event initiates it. Form submitted, Contact tag added, Pipeline stage changed, No activity in X days, Date/Time, Inbound message received.</p>
+<p><strong>MOST COMMON ERROR:</strong> trigger too broad. "Contact Created" without filters fires the workflow on all imported contacts too.</p>
+<p><strong>2. FILTERS / CONDITIONS:</strong> additional conditions so it only runs when appropriate. Example: Form Submitted + Source = "open-house-form" only.</p>
+<p><strong>3. ACTIONS:</strong> Send Email/SMS, Add/Remove Tag, Add to Pipeline, Move Stage, Assign Contact, Create Task, Wait (delay), If/Else, Add Note, Webhook.</p>
+<p><strong>4. GOALS / EXIT CONDITIONS:</strong> what event causes the contact to exit the workflow before completing it. Example: if the lead replies, they exit the automatic sequence.</p>
+<p>Best practice: draw the workflow on paper before building it in GHL. Include all possible paths. Building without that map creates workflows with holes that drop leads.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I configure SPF/DKIM so emails don't go to spam?</summary>
+<div class="faq-a">
+<p>The most critical technical step before go-live.</p>
+<p>1. Settings &rarr; Email Services &rarr; Email Domain &rarr; Add Domain &rarr; <code>driscollpeca.com</code></p>
+<p>2. GHL generates DNS records: TXT for SPF, two CNAMEs for DKIM.</p>
+<p>3. Go to your domain's DNS panel. AgentFire probably manages it and can add the records.</p>
+<p>4. Add exactly the records GHL shows. Copy and paste, don't type manually.</p>
+<p>5. Propagation: 24-48 hours. Verify beforehand at <code>mxtoolbox.com</code></p>
+<p>6. GHL &rarr; Settings &rarr; Email Domain &rarr; "Verify" &rarr; must show green on all fields.</p>
+<p><strong>Additional DMARC:</strong> TXT record <code>_dmarc.driscollpeca.com</code> &rarr; value: <code>v=DMARC1; p=none; rua=mailto:info@driscollpeca.com</code></p>
+<p>Before any bulk campaign: send 5 test emails to Gmail, Outlook, and Apple Mail. Verify they land in inbox, not spam. Verify the "From" shows the agent's name. Verify the Unsubscribe button works (CASL requirement).</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I import contacts from FUB without triggering automations on all of them?</summary>
+<div class="faq-a">
+<p>This is the number one risk of the migration. If not done correctly, you send thousands of messages to historical contacts.</p>
+<p><strong>STEP 1:</strong> Export from FUB as CSV. Separate: active leads vs historical/closed leads.</p>
+<p><strong>STEP 2:</strong> Clean CSV before importing. Remove duplicates. Identify opt-outs. Verify phone format (+1XXXXXXXXXX).</p>
+<p><strong>CRITICAL STEP 3:</strong> DEACTIVATE all workflows with trigger "Contact Created" or "Tag Added" before importing. Without this step, every imported contact fires the welcome workflows.</p>
+<p><strong>STEP 4:</strong> Contacts &rarr; Import &rarr; map fields. FUB "Stage" field &rarr; map to a tag ("fub-stage:[value]"), NOT directly to the GHL pipeline stage.</p>
+<p><strong>STEP 5:</strong> Post-import: review 20-30 contact sample. Merge duplicates. Opt-out contacts: add tag "status:dnd" and activate the Opt-Out field in GHL.</p>
+<p><strong>STEP 6:</strong> Reactivate workflows. They'll now only fire on NEW contacts coming in through configured triggers.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I connect Facebook Ads directly without Zapier?</summary>
+<div class="faq-a">
+<p>GHL has native Facebook Lead Ads integration, faster and more reliable than Zapier for this use case.</p>
+<p>1. Settings &rarr; Integrations &rarr; Facebook &rarr; Connect &rarr; authorize with the business account (not personal).</p>
+<p>2. Select the Driscoll-Peca Business Page and connected Ad Accounts.</p>
+<p>3. Required permissions: leads_retrieval, pages_manage_ads, pages_read_engagement &rarr; accept all.</p>
+<p>4. Marketing &rarr; Facebook &rarr; Lead Forms &rarr; configure for each active form: destination pipeline, stage, automatic tags (source:facebook-ad + campaign name), agent assignment.</p>
+<p>5. Test: create a test lead from Facebook Ads Manager &rarr; verify it arrives in GHL in under 2 minutes with correct pipeline, stage, and tags.</p>
+<p>If you currently have Zapier connecting Facebook &rarr; FUB: deactivate it AFTER verifying the native connection works, never before.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>What needs to be done monthly to keep the system clean?</summary>
+<div class="faq-a">
+<p>Monthly SOP: first Monday of each month, approximately 2 hours.</p>
+<p><strong>BLOCK 1 &mdash; Data Hygiene (30 min):</strong> contacts without pipeline, contacts without email AND without phone (impossible to contact), recent duplicates, opt-outs with DNC field active.</p>
+<p><strong>BLOCK 2 &mdash; Workflow Audit (30 min):</strong> workflows with recent "Failed" executions, SMS bounce rate (if &gt;5% clean invalid numbers), email bounce rate &mdash; export and clean.</p>
+<p><strong>BLOCK 3 &mdash; Tag Cleanup (20 min):</strong> tags with 0 uses in 3+ months, tags outside naming convention, duplicate tags with different spelling (buyer vs Buyer vs buyers).</p>
+<p><strong>BLOCK 4 &mdash; Pipeline Health (20 min):</strong> leads in New Lead more than 7 days, active leads without activity in 14+ days, leads in Nurture without active workflow.</p>
+<p><strong>BLOCK 5 &mdash; Integration Verification (20 min):</strong> test lead from website form, Facebook integration, A2P status active, Zapier logs without errors.</p>
+<p>Document results in Google Drive. After 6 months the logs show patterns: same workflow always failing? Same type of error? That guides redesigns.</p>
+</div></details>
+</div>
+
+<div class="faq-profile">
+<div class="faq-label amber">Internal Tech Support</div>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>An agent says a lead didn't receive the welcome SMS. How do I diagnose this?</summary>
+<div class="faq-a">
+<p>Most frequent support case. 6 possible causes, check in this order:</p>
+<p><strong>1. Did the workflow even fire?</strong> Go to contact &rarr; Automations tab. Does the welcome workflow appear? If NOT: the trigger didn't activate. The lead was probably created in a way that didn't trigger it (manual import).</p>
+<p><strong>2. Did the workflow reach the SMS step?</strong> Click on workflow &rarr; execution log &rarr; identify where it stopped. "Skipped" = If/Else condition not met, not an error. "Failed" = continue to step 3.</p>
+<p><strong>3. Is the phone number valid for SMS?</strong> Verify: has +1, not a landline, no unusual characters.</p>
+<p><strong>4. Is the contact marked Opt-Out?</strong> "SMS Opt-Out" or "Do Not Contact" field active &rarr; GHL blocks all SMS without a visible error.</p>
+<p><strong>5. Is the A2P number still active?</strong> Settings &rarr; Phone Numbers &rarr; Status "Active" and A2P Compliance "Approved". Any flag blocks SMS for everyone.</p>
+<p><strong>6. Did it arrive but get carrier-filtered?</strong> Some carriers filter 10DLC numbers as spam. Not verifiable from GHL. Instruct agent: try contact via email or direct call.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>A workflow is running on contacts it shouldn't be. How do I stop it without breaking the ones that should continue?</summary>
+<div class="faq-a">
+<p>Emergency situation. Act in this exact order:</p>
+<p><strong>STEP 1 (30 seconds):</strong> Automations &rarr; toggle to pause the workflow. Stops new entries but does NOT stop those already inside.</p>
+<p><strong>STEP 2:</strong> Remove affected contacts. If few: contact by contact &rarr; Automations &rarr; Remove from Workflow. If many: Contacts &rarr; filter by active workflow &rarr; select all &rarr; Bulk Action &rarr; Remove from Workflow.</p>
+<p><strong>STEP 3:</strong> Assess the damage. Were incorrect messages already sent? Execution log &rarr; "Completed Actions." If messages already went out: inform Jaime and Deb immediately. May require manual response to affected contacts.</p>
+<p><strong>STEP 4:</strong> Identify root cause. Most common error: trigger too broad. Did it have a creation date filter? A condition that the lead is new?</p>
+<p><strong>STEP 5:</strong> Fix the missing conditions. Create a test contact. Verify the workflow runs correctly. Reactivate.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>The chatbot isn't responding on Facebook/Instagram. What do I check first?</summary>
+<div class="faq-a">
+<p>Known and documented issue. Checklist in order:</p>
+<p><strong>1.</strong> Settings &rarr; Integrations &rarr; Facebook &rarr; connection status. Did the token expire? Facebook tokens expire periodically. If expired: reconnect.</p>
+<p><strong>2.</strong> Facebook Business Suite &rarr; Settings &rarr; Connected Apps &rarr; GHL &rarr; verify "Manage Messages" permission. Without this GHL can receive but not reply.</p>
+<p><strong>3.</strong> Settings &rarr; Conversations AI &rarr; Driscoll-Peca Team bot &rarr; Channels tab. Are Facebook Messenger and Instagram ON? They sometimes self-deactivate after a Facebook reconnection.</p>
+<p><strong>4.</strong> Check that Facebook doesn't have "Instant Replies" active on the page. It can intercept messages before they reach GHL.</p>
+<p><strong>5.</strong> Test: send message from a personal Facebook account &rarr; wait 30 seconds. If it arrived in GHL but the bot didn't respond: problem in bot configuration. If it didn't arrive in GHL: problem in Facebook connection.</p>
+<p><strong>6.</strong> If everything checks out and it still doesn't work: create ticket with full evidence (screenshots of Conversations, Settings &rarr; Facebook, date/time of test).</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>How do I read a workflow's Execution Log?</summary>
+<div class="faq-a">
+<p>From the contact: Automations tab &rarr; click on the workflow &rarr; "View History." You see exactly which steps ran on that specific contact with timestamps.</p>
+<p>From the workflow: Automations &rarr; click on workflow &rarr; "Enrollment History." You see all contacts that have passed through that workflow.</p>
+<p><strong>Status interpretation:</strong></p>
+<p>&#9989; COMPLETED: step executed successfully.</p>
+<p>&#9197; SKIPPED: If/Else condition not met. NOT an error. The workflow took another path.</p>
+<p>&#10060; FAILED: tried to execute but couldn't. Causes: invalid number, bounced email, webhook failed, referenced field deleted.</p>
+<p>&#9208; PAUSED: waiting on a Wait step. Completely normal.</p>
+<p>&#128683; CANCELLED: stopped manually or by Exit Condition.</p>
+<p>When reporting to GHL Support always include: exact workflow name, Contact ID (in the contact's URL), timestamp of the failed step, exact error message from the log.</p>
+</div></details>
+
+<details class="faq-item"><summary class="faq-q"><span class="faq-arrow">›</span>What information do I need to open a GHL Support ticket efficiently?</summary>
+<div class="faq-a">
+<p>A well-documented ticket gets resolved significantly faster. Template:</p>
+<p><strong>TITLE:</strong> [Affected function] - [Brief description]. Example: "Facebook Chatbot &mdash; not responding to messages since Apr 18"</p>
+<p><strong>LOCATION:</strong> Sub-account: Driscoll-Peca Team + Sub-account ID (visible in the URL)</p>
+<p><strong>DESCRIPTION:</strong> What should happen / What is happening / Since when / Frequency (always / sometimes / only with certain contacts)</p>
+<p><strong>STEPS TO REPRODUCE:</strong> Exact instructions anyone can follow to see the problem.</p>
+<p><strong>WHAT I ALREADY TRIED:</strong> Diagnostic checklist completed before opening the ticket.</p>
+<p><strong>EVIDENCE (attach all):</strong> Screenshot of error, Settings screenshot, Execution Log screenshot, affected Contact ID, exact date and time of incident.</p>
+<p><strong>BUSINESS IMPACT:</strong> How many leads affected / whether it's blocking operations / potential revenue at risk.</p>
+<p><strong>Support channels by speed:</strong> 1. Live Chat inside GHL (fastest). 2. Ticket at support.gohighlevel.com. 3. GHL Community. 4. Official GHL Facebook Group.</p>
+</div></details>
+</div>
+</div>
+
+</div><!-- /content -->
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
