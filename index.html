@@ -1233,10 +1233,7 @@ async function sendMessage() {
     const response = await fetch('https://hook.us2.make.com/9v7rukzsqumyrekczga60buxusbnl6ai', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: SYSTEM_PROMPT,
-        message: text
-      })
+      body: JSON.stringify({ message: text })
     });
     const reply = await response.text() || 'Sorry, I could not process that.';
     loading.className = 'msg bot';
