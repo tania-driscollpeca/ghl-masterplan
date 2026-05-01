@@ -190,6 +190,12 @@ details[open] .faq-arrow{transform:rotate(90deg)}
 ::-webkit-scrollbar-track{background:var(--navy)}
 ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
 
+/* ── CLICKABLE TOPICS ── */
+h3.clickable{cursor:pointer;transition:all 0.2s;padding:6px 10px;border-radius:6px;margin-left:-10px}
+h3.clickable:hover{background:rgba(0,251,240,0.08);color:#00fbf0}
+.topic-badge{display:inline-block;font-size:9px;font-weight:700;background:rgba(0,251,240,0.1);color:var(--teal);border:1px solid rgba(0,251,240,0.2);border-radius:10px;padding:2px 7px;margin-left:8px;vertical-align:middle;font-family:inherit;transition:all 0.2s}
+h3.clickable:hover .topic-badge{background:rgba(0,251,240,0.2)}
+
 /* ── LANG DISPLAY ── */
 .es{display:block}
 .en{display:none}
@@ -249,7 +255,7 @@ body.lang-en span.en{display:inline}
   <p class="en">GHL is not just a CRM. It's a complete ecosystem for marketing, sales, communication, and automation. The learning curve is steeper than FUB, but the potential is incomparably greater.</p>
 </div>
 
-<h3><span class="es">Los 5 &aacute;reas principales de GHL</span><span class="en">The 5 Main Areas of GHL</span></h3>
+<h3 class="clickable" onclick="clickTopic('Las 5 áreas de GHL','The 5 Areas of GHL','¿Puedes explicarme las 5 áreas principales de GHL y cómo las usa el equipo DPT?','Can you explain the 5 main areas of GHL and how the DPT team uses them?')"><span class="es">Los 5 &aacute;reas principales de GHL</span><span class="en">The 5 Main Areas of GHL</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block sky">
   <h4>1. <span class="tip" data-tip="Contactos, Oportunidades, Pipelines">Contacts &amp; Opportunities</span></h4>
@@ -281,7 +287,7 @@ body.lang-en span.en{display:inline}
   <p class="en">Landing page, form, and funnel builder. This is where the Open House form, VIP List form, and any lead capture page lives.</p>
 </div>
 
-<h3><span class="es">La diferencia fundamental vs FUB</span><span class="en">The Fundamental Difference vs FUB</span></h3>
+<h3 class="clickable" onclick="clickTopic('GHL vs FUB','GHL vs FUB','¿Cuáles son las diferencias más importantes entre GHL y FUB para el trabajo diario?','What are the key differences between GHL and FUB for daily work?')"><span class="es">La diferencia fundamental vs FUB</span><span class="en">The Fundamental Difference vs FUB</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="table-wrap">
 <table>
@@ -296,7 +302,7 @@ body.lang-en span.en{display:inline}
 </table>
 </div>
 
-<h3><span class="es">Los 3 errores de adopci&oacute;n m&aacute;s comunes</span><span class="en">The 3 Most Common Adoption Mistakes</span></h3>
+<h3 class="clickable" onclick="clickTopic('Los 3 errores de adopción','The 3 Adoption Mistakes','¿Cuáles son los errores más comunes al migrar a GHL y cómo los evitamos?','What are the most common mistakes when migrating to GHL and how do we avoid them?')"><span class="es">Los 3 errores de adopci&oacute;n m&aacute;s comunes</span><span class="en">The 3 Most Common Adoption Mistakes</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block coral">
   <h4>&#x26A0; <span class="es">Error 1: Intentar replicar FUB exactamente</span><span class="en">Mistake 1: Trying to replicate FUB exactly</span></h4>
@@ -329,7 +335,7 @@ body.lang-en span.en{display:inline}
   <p class="en">Lead Connector is GHL's mobile app. It's the primary tool for realtors in the field. From here they respond to leads, make calls, view their pipeline, and manage tasks &mdash; all from their phone.</p>
 </div>
 
-<h3><span class="es">Paso 1: Descarga e inicio de sesi&oacute;n</span><span class="en">Step 1: Download and Sign In</span></h3>
+<h3 class="clickable" onclick="clickTopic('Descarga e inicio de sesión','Download and Sign In','¿Cómo descargo Lead Connector y la configuro correctamente desde cero?','How do I download Lead Connector and set it up correctly from scratch?')"><span class="es">Paso 1: Descarga e inicio de sesi&oacute;n</span><span class="en">Step 1: Download and Sign In</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong><span class="es">Descargar la app</span><span class="en">Download the app</span></strong><p class="es">Busca "Lead Connector" en App Store (iOS) o Play Store (Android). El &#xED;cono es naranja con un cuadrado.</p><p class="en">Search "Lead Connector" in the App Store (iOS) or Play Store (Android). The icon is orange with a square.</p></div></div>
@@ -338,7 +344,7 @@ body.lang-en span.en{display:inline}
   <div class="step"><div class="step-num">4</div><div class="step-body"><strong><span class="es">Activar notificaciones</span><span class="en">Enable notifications</span></strong><p class="es"><strong>CR&Iacute;TICO:</strong> Cuando la app pida permiso para notificaciones, acepta todo. Sin esto no recibir&aacute;s alertas de nuevos leads.</p><p class="en"><strong>CRITICAL:</strong> When the app asks for notification permission, accept everything. Without this you won't receive new lead alerts.</p></div></div>
 </div>
 
-<h3><span class="es">Configuraciones importantes al entrar por primera vez</span><span class="en">Important Settings When You First Enter</span></h3>
+<h3 class="clickable" onclick="clickTopic('Configuraciones importantes','Important Settings','¿Qué configuraciones debo revisar en Lead Connector al entrar por primera vez?','What settings should I review in Lead Connector when I first log in?')"><span class="es">Configuraciones importantes al entrar por primera vez</span><span class="en">Important Settings When You First Enter</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block amber">
   <h4>Settings <span class="es">que debes revisar</span><span class="en">you must check</span></h4>
@@ -350,7 +356,7 @@ body.lang-en span.en{display:inline}
   </ul>
 </div>
 
-<h3><span class="es">Las 6 funciones que usar&aacute;s todos los d&iacute;as</span><span class="en">The 6 Functions You'll Use Every Day</span></h3>
+<h3 class="clickable" onclick="clickTopic('Las 6 funciones diarias','The 6 Daily Functions','¿Cuáles son las 6 funciones de Lead Connector que usaré todos los días?','What are the 6 Lead Connector functions I will use every day?')"><span class="es">Las 6 funciones que usar&aacute;s todos los d&iacute;as</span><span class="en">The 6 Functions You'll Use Every Day</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="mod-grid">
 
@@ -472,7 +478,7 @@ body.lang-en span.en{display:inline}
 
 </div><!-- end mod-grid -->
 
-<h3><span class="es">Errores comunes de la app</span><span class="en">Common App Mistakes</span></h3>
+<h3 class="clickable" onclick="clickTopic('Errores comunes','Common Mistakes','¿Cuáles son los errores más comunes en Lead Connector y cómo los evito?','What are the most common mistakes in Lead Connector and how do I avoid them?')"><span class="es">Errores comunes de la app</span><span class="en">Common App Mistakes</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 <div class="block coral">
   <ul>
     <li><span class="es">&#x274C; Responder leads desde Gmail en vez de desde Conversations &mdash; el historial se pierde</span><span class="en">&#x274C; Replying to leads from Gmail instead of Conversations &mdash; history is lost</span></li>
@@ -495,7 +501,7 @@ body.lang-en span.en{display:inline}
   <p class="en">A lead enters ONE pipeline based on their first declared intent. If intent changes, a new opportunity is created in the correct pipeline. The contact doesn't move &mdash; only the opportunity does.</p>
 </div>
 
-<h3><span class="es">Los 3 pipelines del equipo DPT</span><span class="en">The 3 DPT Team Pipelines</span></h3>
+<h3 class="clickable" onclick="clickTopic('Los 3 pipelines del equipo','The 3 Team Pipelines','¿Puedes explicarme los 3 pipelines: Buyer, Seller y General, y cuándo usar cada uno?','Can you explain the 3 pipelines: Buyer, Seller and General, and when to use each?')"><span class="es">Los 3 pipelines del equipo DPT</span><span class="en">The 3 DPT Team Pipelines</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block sky">
   <h4>Pipeline: Buyer</h4>
@@ -564,7 +570,7 @@ body.lang-en span.en{display:inline}
   <p class="en">FUB was primarily email. GHL unifies SMS, email, website chat, Facebook Messenger, and Instagram DM in a single inbox. You never miss a message from any channel.</p>
 </div>
 
-<h3><span class="es">C&oacute;mo usar Conversations correctamente</span><span class="en">How to Use Conversations Correctly</span></h3>
+<h3 class="clickable" onclick="clickTopic('Cómo usar Conversations','How to Use Conversations','¿Cómo uso Conversations para responder leads sin perder el historial?','How do I use Conversations to reply to leads without losing history?')"><span class="es">C&oacute;mo usar Conversations correctamente</span><span class="en">How to Use Conversations Correctly</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong><span class="es">Acceder al inbox</span><span class="en">Access the inbox</span></strong><p class="es">Men&uacute; izquierdo &rarr; Conversations. Ver&aacute;s todos los mensajes nuevos ordenados por recientes.</p><p class="en">Left menu &rarr; Conversations. You'll see all new messages sorted by most recent.</p></div></div>
@@ -591,7 +597,7 @@ body.lang-en span.en{display:inline}
   <p class="en">A Workflow is the equivalent of FUB's Action Plans, but incomparably more powerful. It's a sequence of automatic actions that trigger when a specific event occurs.</p>
 </div>
 
-<h3><span class="es">Anato&iacute;a de un Workflow (los 4 componentes)</span><span class="en">Workflow Anatomy (the 4 components)</span></h3>
+<h3 class="clickable" onclick="clickTopic('Anatomía de un Workflow','Workflow Anatomy','¿Cuáles son los 4 componentes de un workflow: Trigger, Filters, Actions y Exit Conditions?','What are the 4 components of a workflow: Trigger, Filters, Actions, and Exit Conditions?')"><span class="es">Anato&iacute;a de un Workflow (los 4 componentes)</span><span class="en">Workflow Anatomy (the 4 components)</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block sky">
   <h4>1. <span class="tip" data-tip="El evento que inicia el workflow. Ejemplo: form submitted, tag added, stage changed">Trigger</span> <span class="es">(el disparador)</span><span class="en">(the trigger)</span></h4>
@@ -635,7 +641,7 @@ body.lang-en span.en{display:inline}
   <p class="en">Example: if the lead replies, they exit the automatic sequence. This prevents them from continuing to receive generic messages when they're already in active conversation.</p>
 </div>
 
-<h3><span class="es">Workflows cr&iacute;ticos del equipo DPT</span><span class="en">Critical DPT Team Workflows</span></h3>
+<h3 class="clickable" onclick="clickTopic('Workflows críticos del equipo','Critical Team Workflows','¿Cuáles son los workflows más importantes del equipo DPT y qué hace cada uno?','What are the most important DPT team workflows and what does each one do?')"><span class="es">Workflows cr&iacute;ticos del equipo DPT</span><span class="en">Critical DPT Team Workflows</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="table-wrap">
 <table>
@@ -648,7 +654,7 @@ body.lang-en span.en{display:inline}
 </table>
 </div>
 
-<h3><span class="es">C&oacute;mo leer el Execution Log</span><span class="en">How to Read the Execution Log</span></h3>
+<h3 class="clickable" onclick="clickTopic('Cómo leer el Execution Log','How to Read the Execution Log','¿Cómo interpreto el Execution Log de un workflow? ¿Qué significan Completed, Skipped, Failed?','How do I read a workflow Execution Log? What do Completed, Skipped, Failed mean?')"><span class="es">C&oacute;mo leer el Execution Log</span><span class="en">How to Read the Execution Log</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block amber">
   <h4><span class="es">Los 5 estados posibles</span><span class="en">The 5 Possible Statuses</span></h4>
@@ -675,7 +681,7 @@ body.lang-en span.en{display:inline}
   <p class="en"><strong>Campaigns:</strong> specific sends to a list or segment. An open house email, a monthly newsletter, a re-engagement campaign.</p>
 </div>
 
-<h3><span class="es">C&oacute;mo crear un Template desde cero</span><span class="en">How to Create a Template from Scratch</span></h3>
+<h3 class="clickable" onclick="clickTopic('Cómo crear un Template','How to Create a Template','¿Cómo creo un email template desde cero en GHL? ¿Qué editor uso?','How do I create an email template from scratch in GHL? Which editor should I use?')"><span class="es">C&oacute;mo crear un Template desde cero</span><span class="en">How to Create a Template from Scratch</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong><span class="es">Navegar a Templates</span><span class="en">Navigate to Templates</span></strong><p class="es">Men&uacute; izquierdo &rarr; Marketing &rarr; hover sobre Emails &rarr; Templates.</p><p class="en">Left menu &rarr; Marketing &rarr; hover over Emails &rarr; Templates.</p></div></div>
@@ -685,7 +691,7 @@ body.lang-en span.en{display:inline}
   <div class="step"><div class="step-num">5</div><div class="step-body"><strong><span class="es">Guardar y probar</span><span class="en">Save and test</span></strong><p class="es">Guarda el template &rarr; toca los 3 puntos &rarr; Test Email &rarr; env&iacute;ate una prueba. Verifica en Gmail, Outlook y Apple Mail que llegue al inbox.</p><p class="en">Save the template &rarr; tap the 3 dots &rarr; Test Email &rarr; send yourself a test. Verify in Gmail, Outlook, and Apple Mail that it lands in inbox.</p></div></div>
 </div>
 
-<h3><span class="es">C&oacute;mo crear y enviar una Campaign</span><span class="en">How to Create and Send a Campaign</span></h3>
+<h3 class="clickable" onclick="clickTopic('Cómo crear y enviar una Campaign','How to Create and Send a Campaign','¿Cómo creo y envío una campaña de email en GHL paso a paso?','How do I create and send an email campaign in GHL step by step?')"><span class="es">C&oacute;mo crear y enviar una Campaign</span><span class="en">How to Create and Send a Campaign</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong><span class="es">Ir a Campaigns</span><span class="en">Go to Campaigns</span></strong><p class="es">Marketing &rarr; Emails &rarr; Campaigns &rarr; New.</p><p class="en">Marketing &rarr; Emails &rarr; Campaigns &rarr; New.</p></div></div>
@@ -695,7 +701,7 @@ body.lang-en span.en{display:inline}
   <div class="step"><div class="step-num">5</div><div class="step-body"><strong><span class="es">Enviar o programar</span><span class="en">Send or schedule</span></strong><p class="es"><strong>Send Now:</strong> env&iacute;a inmediatamente. <strong>Schedule:</strong> programa fecha y hora espec&iacute;ficas. <strong>Batch:</strong> env&iacute;a en lotes para listas muy grandes. Siempre programa con anticipaci&oacute;n para revisar antes de enviar.</p><p class="en"><strong>Send Now:</strong> sends immediately. <strong>Schedule:</strong> schedule specific date and time. <strong>Batch:</strong> sends in batches for very large lists. Always schedule in advance to review before sending.</p></div></div>
 </div>
 
-<h3><span class="es">Campa&ntilde;as por tipo de lead (equipo DPT)</span><span class="en">Campaigns by Lead Type (DPT Team)</span></h3>
+<h3 class="clickable" onclick="clickTopic('Campañas por tipo de lead','Campaigns by Lead Type','¿Qué campaña debo enviar a cada tipo de lead: Hot, Warm, Cold, Nurture, Open House?','What campaign should I send to each lead type: Hot, Warm, Cold, Nurture, Open House?')"><span class="es">Campa&ntilde;as por tipo de lead (equipo DPT)</span><span class="en">Campaigns by Lead Type (DPT Team)</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="table-wrap">
 <table>
@@ -721,7 +727,7 @@ body.lang-en span.en{display:inline}
   <p class="en">All leads come in with a tag indicating their source (source:open-house, source:website, etc.). Based on that tag, a workflow assigns them to the correct pipeline and the correct agent.</p>
 </div>
 
-<h3>Round Robin Calendar <span class="es">&mdash; Ya configurado</span><span class="en">&mdash; Already configured</span></h3>
+<h3 class="clickable" onclick="clickTopic('Round Robin Calendar','Round Robin Calendar','¿Cómo funciona el Round Robin del equipo? ¿Cómo pauso o agrego un agente?','How does the team Round Robin work? How do I pause or add an agent?')">Round Robin Calendar <span class="es">&mdash; Ya configurado</span><span class="en">&mdash; Already configured</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block sky">
   <p class="es">El equipo DPT tiene un <span class="tip" data-tip="Sistema que distribuye citas equitativamente entre agentes disponibles">Round Robin Calendar</span> configurado para discovery calls. El bot de GHL lo usa para ofrecer horarios disponibles a los leads.</p>
@@ -730,7 +736,7 @@ body.lang-en span.en{display:inline}
   <p class="en" style="margin-top:6px"><strong>To add or pause an agent from round robin:</strong> Settings &rarr; Calendars &rarr; select Driscoll Peca - Discovery Call calendar &rarr; edit team members.</p>
 </div>
 
-<h3><span class="es">Routing por propiedad (Realtor.ca)</span><span class="en">Property-based Routing (Realtor.ca)</span></h3>
+<h3 class="clickable" onclick="clickTopic('Routing por propiedad','Property Routing','¿Cómo funciona el routing de leads por propiedad con Realtor.ca?','How does property-based lead routing work with Realtor.ca?')"><span class="es">Routing por propiedad (Realtor.ca)</span><span class="en">Property-based Routing (Realtor.ca)</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block amber">
   <h4>&#x26A0; <span class="es">Pendiente de configurar</span><span class="en">&#x26A0; Pending configuration</span></h4>
@@ -738,7 +744,7 @@ body.lang-en span.en{display:inline}
   <p class="en">The Realtor.ca integration to send leads from each property specifically to the assigned agent is in progress. The goal is: lead from property X &rarr; agent assigned to X &rarr; if unavailable &rarr; team round robin.</p>
 </div>
 
-<h3><span class="es">C&oacute;mo pausar un agente temporalmente</span><span class="en">How to Temporarily Pause an Agent</span></h3>
+<h3 class="clickable" onclick="clickTopic('Cómo pausar un agente','How to Pause an Agent','¿Cómo pauso temporalmente a un agente del round robin y cómo lo reactivo?','How do I temporarily pause an agent from the round robin and reactivate them?')"><span class="es">C&oacute;mo pausar un agente temporalmente</span><span class="en">How to Temporarily Pause an Agent</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings &rarr; Calendars</strong><p class="es">Selecciona el calendario de round robin del equipo.</p><p class="en">Select the team round robin calendar.</p></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body"><strong><span class="es">Editar disponibilidad del agente</span><span class="en">Edit agent availability</span></strong><p class="es">Cambia sus horas a "no disponible" o remu&eacute;velo temporalmente del equipo del calendario.</p><p class="en">Change their hours to "unavailable" or temporarily remove them from the calendar team.</p></div></div>
@@ -746,7 +752,11 @@ body.lang-en span.en{display:inline}
 </div>
 
 
-<h3><span class="es">Onboarding de nuevo agente &mdash; De cero a operativo</span><span class="en">New Agent Onboarding &mdash; From Zero to Operational</span></h3>
+<h3 class="clickable" onclick="clickTopic('Onboarding de nuevo agente','New Agent Onboarding','¿Cuáles son los pasos completos para onboardear a un nuevo agente en GHL?','What are the complete steps to onboard a new agent in GHL?')"><span class="es">Onboarding de nuevo agente &mdash; De cero a operativo</span><span class="en">New Agent Onboarding &mdash; From Zero to Operational</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
+<div style="margin:12px 0 16px;border-radius:10px;overflow:hidden;border:1px solid rgba(0,251,240,0.15)">
+  <iframe src="https://drive.google.com/file/d/1FxFEw0je5sJTSxJ2yuwSc3K3CMtYAG6s/preview" 
+    width="100%" height="300" allow="autoplay" style="display:block;border:none;background:#000"></iframe>
+</div>
 
 <div class="block teal">
   <h4><span class="es">&#x1F3AF; Objetivo: agente completamente operativo en menos de 30 minutos</span><span class="en">&#x1F3AF; Goal: agent fully operational in under 30 minutes</span></h4>
@@ -789,7 +799,7 @@ body.lang-en span.en{display:inline}
   <p class="en">A demo page already exists at <strong>site.driscollpeca.com/open-house-page</strong> for testing. The bot already has the Open House flow configured (specific questions for open house visitors). What's missing is activating the official page on the main website.</p>
 </div>
 
-<h3><span class="es">C&oacute;mo construir el Open House Form en GHL</span><span class="en">How to Build the Open House Form in GHL</span></h3>
+<h3 class="clickable" onclick="clickTopic('Cómo construir el Open House Form','How to Build the Open House Form','¿Cómo creo un Open House Form en GHL y lo conecto al workflow correcto?','How do I create an Open House Form in GHL and connect it to the right workflow?')"><span class="es">C&oacute;mo construir el Open House Form en GHL</span><span class="en">How to Build the Open House Form in GHL</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Sites &rarr; Forms &rarr; + New Form</strong><p class="es">Crea un nuevo formulario. N&oacute;mbralo: "Open House - [direcci&oacute;n]"</p><p class="en">Create a new form. Name it: "Open House - [address]"</p></div></div>
@@ -817,7 +827,7 @@ body.lang-en span.en{display:inline}
   </ul>
 </div>
 
-<h3><span class="es">7 categor&iacute;as de leads que maneja el bot</span><span class="en">7 Lead Categories the Bot Handles</span></h3>
+<h3 class="clickable" onclick="clickTopic('Las 7 categorías del bot','The 7 Bot Categories','¿Cuáles son las 7 categorías de leads del bot y qué preguntas hace en cada una?','What are the 7 bot lead categories and what questions does it ask in each?')"><span class="es">7 categor&iacute;as de leads que maneja el bot</span><span class="en">7 Lead Categories the Bot Handles</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="table-wrap">
 <table>
@@ -832,7 +842,7 @@ body.lang-en span.en{display:inline}
 </table>
 </div>
 
-<h3><span class="es">C&oacute;mo navegar al bot en GHL</span><span class="en">How to Navigate to the Bot in GHL</span></h3>
+<h3 class="clickable" onclick="clickTopic('Cómo navegar al bot','How to Navigate to the Bot','¿Cómo accedo al bot en GHL y qué configuro en cada pestaña?','How do I access the bot in GHL and what do I configure in each tab?')"><span class="es">C&oacute;mo navegar al bot en GHL</span><span class="en">How to Navigate to the Bot in GHL</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Subaccount &rarr; AI Agents &rarr; Conversation AI</strong></div></div>
   <div class="step"><div class="step-num">2</div><div class="step-body"><strong><span class="es">Abrir el Primary Bot</span><span class="en">Open the Primary Bot</span></strong><p class="es">Selecciona "Driscoll Peca Team" (marcado como Primary).</p><p class="en">Select "Driscoll Peca Team" (marked as Primary).</p></div></div>
@@ -857,7 +867,7 @@ body.lang-en span.en{display:inline}
   <p class="en">GHL launched its own MCP (Model Context Protocol) server that allows connecting Claude directly to the system. Instead of Tania going into GHL, clicking around, and configuring things manually, Claude can do it from the conversation.</p>
 </div>
 
-<h3><span class="es">Qu&eacute; puede hacer Claude dentro de GHL</span><span class="en">What Claude Can Do Inside GHL</span></h3>
+<h3 class="clickable" onclick="clickTopic('Qué puede hacer Claude en GHL','What Claude Can Do in GHL','¿Qué puede hacer Claude directamente en GHL y qué requiere intervención humana?','What can Claude do directly in GHL and what requires human intervention?')"><span class="es">Qu&eacute; puede hacer Claude dentro de GHL</span><span class="en">What Claude Can Do Inside GHL</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="table-wrap">
 <table>
@@ -875,7 +885,7 @@ body.lang-en span.en{display:inline}
 </table>
 </div>
 
-<h3><span class="es">C&oacute;mo conectar Claude a GHL (requiere laptop)</span><span class="en">How to Connect Claude to GHL (requires laptop)</span></h3>
+<h3 class="clickable" onclick="clickTopic('Cómo conectar Claude a GHL','How to Connect Claude to GHL','¿Cuáles son los pasos exactos para conectar Claude a GHL via MCP?','What are the exact steps to connect Claude to GHL via MCP?')"><span class="es">C&oacute;mo conectar Claude a GHL (requiere laptop)</span><span class="en">How to Connect Claude to GHL (requires laptop)</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-body"><strong><span class="es">Generar el token de integraci&oacute;n</span><span class="en">Generate the integration token</span></strong><p class="es">En GHL: Settings &rarr; Private Integrations &rarr; New Integration. N&oacute;mbrala "Claude GHL". Selecciona los permisos (scopes) necesarios. Copia el token &mdash; es privado, no lo compartas.</p><p class="en">In GHL: Settings &rarr; Private Integrations &rarr; New Integration. Name it "Claude GHL". Select the necessary permissions (scopes). Copy the token &mdash; it's private, don't share it.</p></div></div>
@@ -901,7 +911,7 @@ body.lang-en span.en{display:inline}
   <p class="en">Each lead type receives different communications in frequency and content. Not all leads are equal &mdash; a Hot lead needs weekly contact, a Nurture lead needs monthly value without sales pressure.</p>
 </div>
 
-<h3><span class="es">Flujo post-Open House (el m&aacute;s cr&iacute;tico)</span><span class="en">Post-Open House Flow (the most critical)</span></h3>
+<h3 class="clickable" onclick="clickTopic('Flujo post-Open House','Post-Open House Flow','¿Cuál es el flujo completo de seguimiento después de un Open House?','What is the complete follow-up flow after an Open House?')"><span class="es">Flujo post-Open House (el m&aacute;s cr&iacute;tico)</span><span class="en">Post-Open House Flow (the most critical)</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block sky">
   <ul>
@@ -913,7 +923,7 @@ body.lang-en span.en{display:inline}
   </ul>
 </div>
 
-<h3><span class="es">Newsletter mensual del equipo</span><span class="en">Team Monthly Newsletter</span></h3>
+<h3 class="clickable" onclick="clickTopic('Newsletter mensual','Monthly Newsletter','¿Qué contenido debe tener el newsletter mensual del equipo DPT?','What content should the DPT team monthly newsletter include?')"><span class="es">Newsletter mensual del equipo</span><span class="en">Team Monthly Newsletter</span><span class="topic-badge es">+ profundizar</span><span class="topic-badge en">+ explore</span></h3>
 
 <div class="block mint">
   <h4><span class="es">Contenido recomendado para Eastern Ontario</span><span class="en">Recommended content for Eastern Ontario</span></h4>
@@ -1130,6 +1140,27 @@ body.lang-en span.en{display:inline}
 </div>
 
 <script>
+// ── CLICKABLE TOPICS ──
+function clickTopic(topicEs, topicEn, questionEs, questionEn) {
+  const isEn = document.body.classList.contains('lang-en');
+  const topic = isEn ? topicEn : topicEs;
+  const question = isEn ? questionEn : questionEs;
+  const chatWindow = document.getElementById('chatWindow');
+  chatWindow.classList.add('open');
+  const msgs = document.getElementById('chatMessages');
+  const ctx = document.createElement('div');
+  ctx.className = 'msg bot';
+  ctx.innerHTML = isEn
+    ? 'You clicked on <strong>' + topic + '</strong>. I can walk you through this step by step, explain why it matters, or answer any specific question. Feel free to edit the question below or just hit send!'
+    : 'Hiciste clic en <strong>' + topic + '</strong>. Puedo guiarte paso a paso, explicar por qué es importante o responder cualquier duda específica. Edita la pregunta o simplemente toca enviar.';
+  msgs.appendChild(ctx);
+  const input = document.getElementById('chatInput');
+  input.value = question;
+  input.focus();
+  msgs.scrollTop = msgs.scrollHeight;
+  window.scrollTo(0,0);
+}
+
 // ── LANGUAGE TOGGLE ──
 function setLang(lang) {
   document.body.className = lang === 'en' ? 'lang-en' : '';
