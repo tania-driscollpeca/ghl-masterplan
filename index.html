@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
@@ -39,134 +38,134 @@ body.lang-en span.es { display: none; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-font-family: ‘Poppins’, sans-serif;
-background: var(–bg);
-color: var(–text);
-font-size: 14px;
-line-height: 1.7;
-min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 100vh;
 }
 
 /* ── LAYOUT ── */
 .header {
-position: sticky;
-top: 0;
-z-index: 100;
-background: rgba(6,17,46,0.97);
-backdrop-filter: blur(12px);
-border-bottom: 1px solid var(–border);
-padding: 14px 24px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(6,17,46,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 .header-left { display: flex; flex-direction: column; gap: 2px; }
 .header-eyebrow {
-font-size: 9px;
-font-weight: 600;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(–teal);
-opacity: 0.7;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  opacity: 0.7;
 }
 .header-title {
-font-size: 15px;
-font-weight: 600;
-color: #fff;
-letter-spacing: -0.3px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.3px;
 }
 .header-sub {
-font-size: 10px;
-color: var(–muted);
-font-weight: 300;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 300;
 }
 .header-right {
-display: flex;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 }
 .lang-toggle {
-display: flex;
-border: 1px solid var(–border);
-border-radius: 6px;
-overflow: hidden;
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
 }
 .lang-btn {
-background: transparent;
-border: none;
-padding: 5px 12px;
-font-size: 10px;
-font-weight: 600;
-font-family: ‘Poppins’, sans-serif;
-letter-spacing: 1px;
-cursor: pointer;
-color: var(–muted);
-transition: all 0.15s;
+  background: transparent;
+  border: none;
+  padding: 5px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.15s;
 }
 .lang-btn.active {
-background: var(–teal);
-color: var(–navy);
+  background: var(--teal);
+  color: var(--navy);
 }
 .theme-btn {
-background: transparent;
-border: 1px solid var(–border);
-border-radius: 6px;
-padding: 5px 10px;
-font-size: 9px;
-font-weight: 700;
-font-family: ‘Poppins’, sans-serif;
-letter-spacing: 1px;
-cursor: pointer;
-color: var(–teal);
-transition: all 0.15s;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: var(--teal);
+  transition: all 0.15s;
 }
 
 /* ── NAV ── */
 .nav-wrap {
-position: sticky;
-top: 57px;
-z-index: 90;
-background: rgba(6,17,46,0.95);
-backdrop-filter: blur(8px);
-border-bottom: 1px solid var(–border);
+  position: sticky;
+  top: 57px;
+  z-index: 90;
+  background: rgba(6,17,46,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
 }
 .nav-tabs {
-display: flex;
-padding: 0 24px;
-gap: 0;
-overflow-x: auto;
-scrollbar-width: none;
+  display: flex;
+  padding: 0 24px;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 .nav-tabs::-webkit-scrollbar { display: none; }
 .nav-tab {
-background: transparent;
-border: none;
-border-bottom: 2px solid transparent;
-padding: 12px 16px;
-font-size: 11px;
-font-weight: 500;
-font-family: ‘Poppins’, sans-serif;
-letter-spacing: 0.3px;
-cursor: pointer;
-color: var(–muted);
-white-space: nowrap;
-transition: all 0.15s;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: all 0.15s;
 }
-.nav-tab:hover { color: var(–text); }
+.nav-tab:hover { color: var(--text); }
 .nav-tab.active {
-color: var(–teal);
-border-bottom-color: var(–teal);
+  color: var(--teal);
+  border-bottom-color: var(--teal);
 }
 .nav-section-label {
-font-size: 8px;
-font-weight: 700;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(–muted);
-padding: 10px 24px 0;
-opacity: 0.5;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 24px 0;
+  opacity: 0.5;
 }
 
 /* ── CONTENT ── */
@@ -176,108 +175,108 @@ opacity: 0.5;
 
 /* ── TYPOGRAPHY ── */
 .page-title {
-font-size: 22px;
-font-weight: 700;
-color: #fff;
-letter-spacing: -0.5px;
-margin-bottom: 6px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
 }
 .page-sub {
-font-size: 12px;
-color: var(–muted);
-font-weight: 300;
-margin-bottom: 32px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 32px;
 }
 .section-title {
-font-size: 16px;
-font-weight: 600;
-color: #fff;
-letter-spacing: -0.3px;
-margin: 32px 0 8px;
-padding-bottom: 8px;
-border-bottom: 1px solid var(–border);
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.3px;
+  margin: 32px 0 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
 }
 .section-title:first-child { margin-top: 0; }
 .subsection-title {
-font-size: 13px;
-font-weight: 600;
-color: var(–teal);
-margin: 24px 0 8px;
-letter-spacing: 0.2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  margin: 24px 0 8px;
+  letter-spacing: 0.2px;
 }
 p {
-font-size: 13px;
-color: var(–muted);
-line-height: 1.75;
-margin-bottom: 12px;
-font-weight: 300;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 12px;
+  font-weight: 300;
 }
-strong { color: var(–text); font-weight: 600; }
+strong { color: var(--text); font-weight: 600; }
 ul {
-padding-left: 0;
-margin-bottom: 16px;
-list-style: none;
+  padding-left: 0;
+  margin-bottom: 16px;
+  list-style: none;
 }
 ul li {
-font-size: 13px;
-color: var(–muted);
-line-height: 1.7;
-padding: 3px 0 3px 16px;
-position: relative;
-font-weight: 300;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  padding: 3px 0 3px 16px;
+  position: relative;
+  font-weight: 300;
 }
 ul li::before {
-content: ‘–’;
-position: absolute;
-left: 0;
-color: var(–teal);
-font-weight: 400;
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-weight: 400;
 }
 
 /* ── CALLOUT ── */
 .callout {
-border-left: 3px solid var(–teal);
-padding: 12px 16px;
-margin: 16px 0;
-background: rgba(0,251,240,0.04);
-border-radius: 0 6px 6px 0;
+  border-left: 3px solid var(--teal);
+  padding: 12px 16px;
+  margin: 16px 0;
+  background: rgba(0,251,240,0.04);
+  border-radius: 0 6px 6px 0;
 }
-.callout.warn { border-left-color: var(–coral); background: rgba(255,85,126,0.04); }
-.callout.info { border-left-color: var(–sky); background: rgba(5,195,249,0.04); }
+.callout.warn { border-left-color: var(--coral); background: rgba(255,85,126,0.04); }
+.callout.info { border-left-color: var(--sky); background: rgba(5,195,249,0.04); }
 .callout p { margin: 0; }
 .callout-label {
-font-size: 9px;
-font-weight: 700;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(–teal);
-margin-bottom: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 4px;
 }
-.callout.warn .callout-label { color: var(–coral); }
-.callout.info .callout-label { color: var(–sky); }
+.callout.warn .callout-label { color: var(--coral); }
+.callout.info .callout-label { color: var(--sky); }
 
 /* ── STEPS ── */
 .steps { display: flex; flex-direction: column; gap: 0; margin: 16px 0; }
 .step {
-display: flex;
-gap: 14px;
-padding: 10px 0;
-border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .step:last-child { border-bottom: none; }
 .step-n {
-flex-shrink: 0;
-width: 22px;
-height: 22px;
-border-radius: 50%;
-background: var(–teal);
-color: var(–navy);
-font-size: 10px;
-font-weight: 700;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 2px;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
 }
 .step-body { flex: 1; }
 .step-body strong { display: block; margin-bottom: 2px; font-size: 13px; }
@@ -286,238 +285,240 @@ margin-top: 2px;
 /* ── TABLE ── */
 .table-wrap { overflow-x: auto; margin: 16px 0; }
 table {
-width: 100%;
-border-collapse: collapse;
-font-size: 12px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
 }
 th {
-text-align: left;
-padding: 8px 12px;
-font-size: 9px;
-font-weight: 700;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-color: var(–muted);
-border-bottom: 1px solid var(–border);
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
 }
 td {
-padding: 10px 12px;
-border-bottom: 1px solid rgba(255,255,255,0.04);
-color: var(–muted);
-vertical-align: top;
-font-weight: 300;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: var(--muted);
+  vertical-align: top;
+  font-weight: 300;
 }
-td strong { color: var(–text); }
+td strong { color: var(--text); }
 tr:last-child td { border-bottom: none; }
 
 /* ── VIDEO ── */
 .vid-wrap {
-margin: 20px 0;
-border-radius: 10px;
-overflow: hidden;
-border: 1px solid var(–border);
+  margin: 20px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
 }
 .vid-label {
-font-size: 9px;
-font-weight: 700;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(–muted);
-padding: 10px 14px 0;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 14px 0;
 }
 .vid-embed {
-position: relative;
-padding-bottom: 56.25%;
-height: 0;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
 }
 .vid-embed iframe {
-position: absolute;
-top: 0; left: 0;
-width: 100%; height: 100%;
-border: none;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
 }
 
 /* ── CHAT ── */
 .chat-bubble { position: fixed; bottom: 24px; right: 24px; z-index: 500; }
 .chat-toggle {
-width: 48px;
-height: 48px;
-border-radius: 50%;
-background: var(–teal);
-border: none;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 4px 20px rgba(0,251,240,0.3);
-transition: transform 0.2s;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,251,240,0.3);
+  transition: transform 0.2s;
 }
 .chat-toggle:hover { transform: scale(1.08); }
-.chat-toggle svg { width: 20px; height: 20px; fill: var(–navy); }
+.chat-toggle svg { width: 20px; height: 20px; fill: var(--navy); }
 .chat-window {
-position: fixed;
-bottom: 80px;
-right: 24px;
-width: 320px;
-max-width: calc(100vw - 48px);
-background: #0b1640;
-border: 1px solid var(–border);
-border-radius: 12px;
-box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-display: none;
-flex-direction: column;
-overflow: hidden;
-z-index: 499;
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  width: 320px;
+  max-width: calc(100vw - 48px);
+  background: #0b1640;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 499;
 }
 .chat-window.open { display: flex; }
 .chat-header {
-padding: 12px 16px;
-border-bottom: 1px solid var(–border);
-display: flex;
-align-items: center;
-gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .chat-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
 .chat-title { font-size: 11px; font-weight: 600; color: #fff; }
-.chat-sub { font-size: 9px; color: var(–muted); }
+.chat-sub { font-size: 9px; color: var(--muted); }
 .chat-msgs {
-flex: 1;
-overflow-y: auto;
-padding: 12px;
-display: flex;
-flex-direction: column;
-gap: 8px;
-min-height: 180px;
-max-height: 300px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 180px;
+  max-height: 300px;
 }
 .msg {
-max-width: 88%;
-padding: 8px 11px;
-border-radius: 8px;
-font-size: 12px;
-line-height: 1.6;
-font-weight: 300;
+  max-width: 88%;
+  padding: 8px 11px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 300;
 }
 .msg.bot {
-background: rgba(0,251,240,0.06);
-border: 1px solid var(–border);
-color: var(–text);
-align-self: flex-start;
+  background: rgba(0,251,240,0.06);
+  border: 1px solid var(--border);
+  color: var(--text);
+  align-self: flex-start;
 }
 .msg.user {
-background: var(–teal);
-color: var(–navy);
-align-self: flex-end;
-font-weight: 500;
+  background: var(--teal);
+  color: var(--navy);
+  align-self: flex-end;
+  font-weight: 500;
 }
 .chat-input-row {
-padding: 10px;
-border-top: 1px solid var(–border);
-display: flex;
-gap: 8px;
+  padding: 10px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
 }
 .chat-input {
-flex: 1;
-background: rgba(255,255,255,0.05);
-border: 1px solid var(–border);
-border-radius: 6px;
-padding: 7px 10px;
-color: var(–text);
-font-size: 12px;
-font-family: ‘Poppins’, sans-serif;
-outline: none;
-resize: none;
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 10px;
+  color: var(--text);
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  resize: none;
 }
-.chat-input:focus { border-color: var(–teal); }
+.chat-input:focus { border-color: var(--teal); }
 .chat-send {
-background: var(–teal);
-border: none;
-border-radius: 6px;
-padding: 7px 12px;
-cursor: pointer;
-color: var(–navy);
-font-weight: 700;
-font-size: 13px;
-font-family: ‘Poppins’, sans-serif;
+  background: var(--teal);
+  border: none;
+  border-radius: 6px;
+  padding: 7px 12px;
+  cursor: pointer;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
 }
 .chat-send:disabled { opacity: 0.4; }
 
+
+
 /* ── FAQ TABS ── */
 .faq-tabs {
-display: flex;
-border-bottom: 1px solid var(–border);
-margin-bottom: 24px;
-gap: 0;
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  gap: 0;
 }
 .faq-tab {
-background: transparent;
-border: none;
-border-bottom: 2px solid transparent;
-padding: 10px 20px;
-font-size: 12px;
-font-weight: 500;
-font-family: ‘Poppins’, sans-serif;
-cursor: pointer;
-color: var(–muted);
-transition: all 0.15s;
-margin-bottom: -1px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.15s;
+  margin-bottom: -1px;
 }
 .faq-tab.active {
-color: var(–teal);
-border-bottom-color: var(–teal);
+  color: var(--teal);
+  border-bottom-color: var(--teal);
 }
-.faq-tab:hover { color: var(–text); }
+.faq-tab:hover { color: var(--text); }
 .faq-panel { display: none; }
 .faq-panel.active { display: block; }
 body.theme-light .faq-tab.active { color: #050e3d; border-bottom-color: #050e3d; }
 
 /* ── EXPLORE BUTTON ── */
 .explore-btn {
-display: inline-block;
-font-size: 9px;
-font-weight: 600;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-color: var(–teal);
-border: 1px solid var(–border);
-border-radius: 4px;
-padding: 2px 8px;
-margin-left: 10px;
-cursor: pointer;
-background: transparent;
-font-family: ‘Poppins’, sans-serif;
-vertical-align: middle;
-transition: all 0.15s;
-opacity: 0.6;
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-left: 10px;
+  cursor: pointer;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  vertical-align: middle;
+  transition: all 0.15s;
+  opacity: 0.6;
 }
 .explore-btn:hover {
-opacity: 1;
-border-color: var(–teal);
-background: rgba(0,251,240,0.06);
+  opacity: 1;
+  border-color: var(--teal);
+  background: rgba(0,251,240,0.06);
 }
 body.theme-light .explore-btn {
-color: #050e3d;
-border-color: rgba(5,14,61,0.2);
+  color: #050e3d;
+  border-color: rgba(5,14,61,0.2);
 }
 body.theme-light .explore-btn:hover {
-background: rgba(5,14,61,0.05);
-border-color: #050e3d;
+  background: rgba(5,14,61,0.05);
+  border-color: #050e3d;
 }
 body.theme-amber .explore-btn {
-color: #c8a96e;
-border-color: rgba(180,120,30,0.2);
+  color: #c8a96e;
+  border-color: rgba(180,120,30,0.2);
 }
 
 /* ── THEMES ── */
 body.theme-light {
-–bg: #ffffff;
-–surface: #f5f7fa;
-–border: rgba(5,14,61,0.1);
-–text: #0d1f3c;
-–muted: #3a5568;
-–accent: #050e3d;
-background: #ffffff;
-color: #0d1f3c;
+  --bg: #ffffff;
+  --surface: #f5f7fa;
+  --border: rgba(5,14,61,0.1);
+  --text: #0d1f3c;
+  --muted: #3a5568;
+  --accent: #050e3d;
+  background: #ffffff;
+  color: #0d1f3c;
 }
 body.theme-light .header,
 body.theme-light .nav-wrap { background: rgba(255,255,255,0.97); }
@@ -545,13 +546,13 @@ body.theme-light .page-sub { color: #6b7280; }
 body.theme-light .nav-section-label { color: #9ca3af; }
 
 body.theme-amber {
-–bg: #0d0900;
-–surface: #130e00;
-–border: rgba(180,120,30,0.2);
-–text: #c8a96e;
-–muted: #8a7040;
-background: #0d0900;
-color: #c8a96e;
+  --bg: #0d0900;
+  --surface: #130e00;
+  --border: rgba(180,120,30,0.2);
+  --text: #c8a96e;
+  --muted: #8a7040;
+  background: #0d0900;
+  color: #c8a96e;
 }
 body.theme-amber .header, body.theme-amber .nav-wrap { background: rgba(13,9,0,0.98); }
 body.theme-amber .nav-tab { color: #6a5020; }
@@ -569,28 +570,26 @@ body.theme-amber .chat-input { background: #1a1200; color: #c8a96e; }
 body.theme-amber .chat-send { background: #5a3e10; color: #e8c88e; }
 
 body.theme-sky {
-–bg: #03080f;
-–surface: #060f1e;
-–border: rgba(5,195,249,0.15);
-–text: #c8e8f8;
-–muted: #6a9db8;
-background: #03080f;
-color: #c8e8f8;
+  --bg: #03080f;
+  --surface: #060f1e;
+  --border: rgba(5,195,249,0.15);
+  --text: #c8e8f8;
+  --muted: #6a9db8;
+  background: #03080f;
+  color: #c8e8f8;
 }
-body.theme-sky .section-title { color: var(–sky); border-bottom-color: rgba(5,195,249,0.15); }
+body.theme-sky .section-title { color: var(--sky); border-bottom-color: rgba(5,195,249,0.15); }
 body.theme-sky .subsection-title { color: #7ddcf7; }
-body.theme-sky .step-n { background: var(–sky); color: #030d1f; }
-body.theme-sky .nav-tab.active { color: var(–sky); border-bottom-color: var(–sky); }
-body.theme-sky .lang-btn.active { background: var(–sky); color: #030d1f; }
-body.theme-sky .chat-toggle { background: var(–sky); }
-body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
+body.theme-sky .step-n { background: var(--sky); color: #030d1f; }
+body.theme-sky .nav-tab.active { color: var(--sky); border-bottom-color: var(--sky); }
+body.theme-sky .lang-btn.active { background: var(--sky); color: #030d1f; }
+body.theme-sky .chat-toggle { background: var(--sky); }
+body.theme-sky .chat-send { background: var(--sky); color: #030d1f; }
 </style>
-
 </head>
 <body>
 
 <!-- HEADER -->
-
 <div class="header">
   <div class="header-left">
     <div class="header-eyebrow">Driscoll-Peca Team · Internal</div>
@@ -610,7 +609,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- NAV -->
-
 <div class="nav-wrap">
   <div class="nav-section-label">
     <span class="es">Admin</span><span class="en">Admin</span>
@@ -655,11 +653,9 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- CONTENT -->
-
 <div class="content">
 
 <!-- ══ ORIENTATION ══ -->
-
 <div id="sec-orientation" class="section active">
   <div class="es">
     <div class="page-title">Orientación General</div>
@@ -764,7 +760,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ WORKFLOWS ══ -->
-
 <div id="sec-workflows" class="section">
   <div class="es">
     <div class="page-title">Workflows</div>
@@ -907,7 +902,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ EMAIL MARKETING ══ -->
-
 <div id="sec-email" class="section">
   <div class="es">
     <div class="page-title">Email Marketing</div>
@@ -964,7 +958,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ LEAD ROUTING ══ -->
-
 <div id="sec-routing" class="section">
   <div class="es">
     <div class="page-title">Lead Routing</div>
@@ -1050,7 +1043,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ OPEN HOUSE ══ -->
-
 <div id="sec-openhouse" class="section">
   <div class="es">
     <div class="page-title">Open House</div>
@@ -1115,7 +1107,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ CHATBOT ══ -->
-
 <div id="sec-chatbot" class="section">
   <div class="es">
     <div class="page-title">Chatbot</div>
@@ -1203,7 +1194,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ MCP ══ -->
-
 <div id="sec-mcp" class="section">
   <div class="es">
     <div class="page-title">Claude + GHL</div>
@@ -1270,7 +1260,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ CAMPAIGNS ══ -->
-
 <div id="sec-campaigns" class="section">
   <div class="es">
     <div class="page-title">Campañas por tipo de lead</div>
@@ -1350,7 +1339,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ MIGRATION ══ -->
-
 <div id="sec-migration" class="section">
   <div class="es">
     <div class="page-title">FUB → GHL</div>
@@ -1420,7 +1408,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ LEAD CONNECTOR APP ══ -->
-
 <div id="sec-app" class="section">
   <div class="es">
     <div class="page-title">Lead Connector App</div>
@@ -1521,7 +1508,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ CONVERSATIONS ══ -->
-
 <div id="sec-conversations" class="section">
   <div class="es">
     <div class="page-title">Conversations</div>
@@ -1576,7 +1562,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ PIPELINES ══ -->
-
 <div id="sec-pipelines" class="section">
   <div class="es">
     <div class="page-title">Pipelines</div>
@@ -1678,7 +1663,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ TASKS & CALENDAR ══ -->
-
 <div id="sec-tasks" class="section">
   <div class="es">
     <div class="page-title">Tareas y Calendario</div>
@@ -1719,7 +1703,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div>
 
 <!-- ══ FAQ ══ -->
-
 <div id="sec-faq" class="section">
   <div class="es"><div class="page-title">Preguntas frecuentes</div><div class="page-sub">Para procesos internos del equipo consulta el asistente en ChatGPT.</div></div>
   <div class="en"><div class="page-title">Frequently Asked Questions</div><div class="page-sub">For internal team processes consult the team assistant in ChatGPT.</div></div>
@@ -1730,206 +1713,199 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
   </div>
 
   <!-- AGENTS TAB -->
-
   <div id="faqtab-agents" class="faq-panel active">
 
-```
-<div class="section-title"><span class="es">Lead Connector y uso diario</span><span class="en">Lead Connector and daily use</span></div>
-<div class="es">
-  <div class="subsection-title">¿Dónde están mis Smart Lists?</div>
-  <p>No existen igual en GHL. Usa Custom Views en Contacts y dentro de cada Pipeline. La diferencia clave: en FUB tú ibas a buscar quién necesita atención. En GHL el sistema crea Tasks automáticas para decirte a quién contactar hoy.</p>
-  <div class="subsection-title">¿Los textos y llamadas salen de mi número personal?</div>
-  <p>No. Todos los textos y llamadas salen del número del equipo asignado a ti en GHL. Tu número personal nunca queda expuesto al lead.</p>
-  <div class="subsection-title">¿Cómo hago un Voicemail Drop?</div>
-  <p>Llama al lead → espera que inicie el saludo del voicemail → toca Drop Voicemail → selecciona VM Warm o VM Cold → cuelga inmediatamente. El mensaje pregrabado se deposita solo. No esperes el beep.</p>
-  <div class="subsection-title">¿Cómo agrego una nota después de una llamada?</div>
-  <p>Contacto → pestaña Notes → Add Note. Formato estándar: resultado (contestó / no contestó / dejé VM), resumen de la conversación, próximo paso y cuándo, alerta si hay algo importante para el equipo.</p>
-  <div class="subsection-title">¿Qué hago si el lead no recibe mis mensajes?</div>
-  <p>Primero verifica que estés respondiendo desde Conversations, no desde Gmail. Si respondes desde Gmail el historial se pierde. Verifica también que el contacto no esté marcado como DND.</p>
-  <div class="subsection-title">¿Cómo confirmo una cita desde la app?</div>
-  <p>Calendar en el menú → toca la cita → cambia el status a Confirmed. Se envía automáticamente el email y SMS de confirmación. Si el lead no aparece cambia a No Show para activar el workflow de re-agendamiento.</p>
-  <div class="subsection-title">¿Por qué veo conversaciones de otros agentes?</div>
-  <p>En GHL el Team Inbox muestra todas las conversaciones de la cuenta. Para ver solo las tuyas usa My Inbox o filtra por Assigned To igual a tu nombre.</p>
-  <div class="subsection-title">¿Cómo creo un contacto sin duplicarlo?</div>
-  <p>Antes de crear, busca por email Y por teléfono. Si ya existe, actualiza el contacto existente. Los duplicados rompen el historial y las automatizaciones.</p>
-</div>
-<div class="en">
-  <div class="subsection-title">Where are my Smart Lists?</div>
-  <p>They don't exist the same way in GHL. Use Custom Views in Contacts and inside each Pipeline. Key difference: in FUB you went to find who needs attention. In GHL the system creates automatic Tasks to tell you who to contact today.</p>
-  <div class="subsection-title">Do texts and calls go from my personal number?</div>
-  <p>No. All texts and calls go from the team number assigned to you in GHL. Your personal number is never exposed to the lead.</p>
-  <div class="subsection-title">How do I do a Voicemail Drop?</div>
-  <p>Call the lead → wait for the voicemail greeting to start → tap Drop Voicemail → select VM Warm or VM Cold → hang up immediately. The pre-recorded message deposits itself. Don't wait for the beep.</p>
-  <div class="subsection-title">How do I add a note after a call?</div>
-  <p>Contact → Notes tab → Add Note. Standard format: result (answered / no answer / left VM), conversation summary, next step and when, alert if anything important for the team.</p>
-  <div class="subsection-title">What do I do if the lead isn't receiving my messages?</div>
-  <p>First verify you're replying from Conversations, not Gmail. If you reply from Gmail the history is lost. Also verify the contact isn't marked DND.</p>
-  <div class="subsection-title">How do I confirm an appointment from the app?</div>
-  <p>Calendar in the menu → tap the appointment → change status to Confirmed. Confirmation email and SMS are sent automatically. If the lead doesn't show, change to No Show to activate the rescheduling workflow.</p>
-  <div class="subsection-title">Why do I see other agents' conversations?</div>
-  <p>In GHL the Team Inbox shows all account conversations. To see only yours use My Inbox or filter by Assigned To equals your name.</p>
-  <div class="subsection-title">How do I create a contact without duplicating?</div>
-  <p>Before creating, search by email AND by phone. If it already exists, update the existing contact. Duplicates break history and automations.</p>
-</div>
+    <div class="section-title"><span class="es">Lead Connector y uso diario</span><span class="en">Lead Connector and daily use</span></div>
+    <div class="es">
+      <div class="subsection-title">¿Dónde están mis Smart Lists?</div>
+      <p>No existen igual en GHL. Usa Custom Views en Contacts y dentro de cada Pipeline. La diferencia clave: en FUB tú ibas a buscar quién necesita atención. En GHL el sistema crea Tasks automáticas para decirte a quién contactar hoy.</p>
+      <div class="subsection-title">¿Los textos y llamadas salen de mi número personal?</div>
+      <p>No. Todos los textos y llamadas salen del número del equipo asignado a ti en GHL. Tu número personal nunca queda expuesto al lead.</p>
+      <div class="subsection-title">¿Cómo hago un Voicemail Drop?</div>
+      <p>Llama al lead → espera que inicie el saludo del voicemail → toca Drop Voicemail → selecciona VM Warm o VM Cold → cuelga inmediatamente. El mensaje pregrabado se deposita solo. No esperes el beep.</p>
+      <div class="subsection-title">¿Cómo agrego una nota después de una llamada?</div>
+      <p>Contacto → pestaña Notes → Add Note. Formato estándar: resultado (contestó / no contestó / dejé VM), resumen de la conversación, próximo paso y cuándo, alerta si hay algo importante para el equipo.</p>
+      <div class="subsection-title">¿Qué hago si el lead no recibe mis mensajes?</div>
+      <p>Primero verifica que estés respondiendo desde Conversations, no desde Gmail. Si respondes desde Gmail el historial se pierde. Verifica también que el contacto no esté marcado como DND.</p>
+      <div class="subsection-title">¿Cómo confirmo una cita desde la app?</div>
+      <p>Calendar en el menú → toca la cita → cambia el status a Confirmed. Se envía automáticamente el email y SMS de confirmación. Si el lead no aparece cambia a No Show para activar el workflow de re-agendamiento.</p>
+      <div class="subsection-title">¿Por qué veo conversaciones de otros agentes?</div>
+      <p>En GHL el Team Inbox muestra todas las conversaciones de la cuenta. Para ver solo las tuyas usa My Inbox o filtra por Assigned To igual a tu nombre.</p>
+      <div class="subsection-title">¿Cómo creo un contacto sin duplicarlo?</div>
+      <p>Antes de crear, busca por email Y por teléfono. Si ya existe, actualiza el contacto existente. Los duplicados rompen el historial y las automatizaciones.</p>
+    </div>
+    <div class="en">
+      <div class="subsection-title">Where are my Smart Lists?</div>
+      <p>They don't exist the same way in GHL. Use Custom Views in Contacts and inside each Pipeline. Key difference: in FUB you went to find who needs attention. In GHL the system creates automatic Tasks to tell you who to contact today.</p>
+      <div class="subsection-title">Do texts and calls go from my personal number?</div>
+      <p>No. All texts and calls go from the team number assigned to you in GHL. Your personal number is never exposed to the lead.</p>
+      <div class="subsection-title">How do I do a Voicemail Drop?</div>
+      <p>Call the lead → wait for the voicemail greeting to start → tap Drop Voicemail → select VM Warm or VM Cold → hang up immediately. The pre-recorded message deposits itself. Don't wait for the beep.</p>
+      <div class="subsection-title">How do I add a note after a call?</div>
+      <p>Contact → Notes tab → Add Note. Standard format: result (answered / no answer / left VM), conversation summary, next step and when, alert if anything important for the team.</p>
+      <div class="subsection-title">What do I do if the lead isn't receiving my messages?</div>
+      <p>First verify you're replying from Conversations, not Gmail. If you reply from Gmail the history is lost. Also verify the contact isn't marked DND.</p>
+      <div class="subsection-title">How do I confirm an appointment from the app?</div>
+      <p>Calendar in the menu → tap the appointment → change status to Confirmed. Confirmation email and SMS are sent automatically. If the lead doesn't show, change to No Show to activate the rescheduling workflow.</p>
+      <div class="subsection-title">Why do I see other agents' conversations?</div>
+      <p>In GHL the Team Inbox shows all account conversations. To see only yours use My Inbox or filter by Assigned To equals your name.</p>
+      <div class="subsection-title">How do I create a contact without duplicating?</div>
+      <p>Before creating, search by email AND by phone. If it already exists, update the existing contact. Duplicates break history and automations.</p>
+    </div>
 
-<div class="section-title"><span class="es">Pipelines y leads</span><span class="en">Pipelines and leads</span></div>
-<div class="es">
-  <div class="subsection-title">¿Cómo muevo un lead de stage?</div>
-  <p>Opportunities → arrastra la tarjeta al nuevo stage, o abre el lead → toca el stage actual → selecciona el nuevo. Siempre agrega una nota explicando por qué cambió. No muevas a Closed Lost sin agregar el motivo.</p>
-  <div class="subsection-title">¿Cuándo muevo un lead de B-Warm a A-Hot?</div>
-  <p>Cuando el lead confirma timeline de 1-3 meses, tiene pre-aprobación o pide ver propiedades específicas. No muevas solo por una respuesta positiva genérica — necesitas evidencia de urgencia real.</p>
-  <div class="subsection-title">¿Qué hago cuando un lead dice que no está listo todavía?</div>
-  <p>Muévelo a B-Warm o C-Cold según el timeline. El workflow de nurture toma el control automáticamente. Documenta el timeline en las notas para que la secuencia tenga contexto.</p>
-  <div class="subsection-title">¿Un lead puede estar en dos pipelines al mismo tiempo?</div>
-  <p>El contacto es uno solo, pero puede tener oportunidades en múltiples pipelines. Ejemplo: alguien que quiere vender Y comprar tendría una oportunidad en Seller Pipeline y otra en Buyer Pipeline.</p>
-  <div class="subsection-title">¿Qué debo hacer cuando recibo un nuevo lead asignado?</div>
-  <p>Idealmente en 3 minutos. Abre el contacto, revisa de dónde viene (tag de source), lee si el bot ya tuvo conversación con él, y responde desde Conversations en el canal que usó.</p>
-</div>
-<div class="en">
-  <div class="subsection-title">How do I move a lead to a new stage?</div>
-  <p>Opportunities → drag the card to the new stage, or open the lead → tap the current stage → select the new one. Always add a note explaining why it changed. Don't move to Closed Lost without adding the reason.</p>
-  <div class="subsection-title">When do I move a lead from B-Warm to A-Hot?</div>
-  <p>When the lead confirms a 1-3 month timeline, has pre-approval, or asks to see specific properties. Don't move just for a generic positive response — you need evidence of real urgency.</p>
-  <div class="subsection-title">What do I do when a lead says they're not ready yet?</div>
-  <p>Move them to B-Warm or C-Cold based on their timeline. The nurture workflow takes over automatically. Document the timeline in notes so the sequence has context.</p>
-  <div class="subsection-title">Can a lead be in two pipelines at the same time?</div>
-  <p>The contact is one, but can have opportunities in multiple pipelines. Example: someone who wants to sell AND buy would have one opportunity in Seller Pipeline and one in Buyer Pipeline.</p>
-  <div class="subsection-title">What should I do when I receive a new assigned lead?</div>
-  <p>Ideally within 3 minutes. Open the contact, review where they came from (source tag), read if the bot already had a conversation with them, and reply from Conversations on the channel they used.</p>
-</div>
+    <div class="section-title"><span class="es">Pipelines y leads</span><span class="en">Pipelines and leads</span></div>
+    <div class="es">
+      <div class="subsection-title">¿Cómo muevo un lead de stage?</div>
+      <p>Opportunities → arrastra la tarjeta al nuevo stage, o abre el lead → toca el stage actual → selecciona el nuevo. Siempre agrega una nota explicando por qué cambió. No muevas a Closed Lost sin agregar el motivo.</p>
+      <div class="subsection-title">¿Cuándo muevo un lead de B-Warm a A-Hot?</div>
+      <p>Cuando el lead confirma timeline de 1-3 meses, tiene pre-aprobación o pide ver propiedades específicas. No muevas solo por una respuesta positiva genérica — necesitas evidencia de urgencia real.</p>
+      <div class="subsection-title">¿Qué hago cuando un lead dice que no está listo todavía?</div>
+      <p>Muévelo a B-Warm o C-Cold según el timeline. El workflow de nurture toma el control automáticamente. Documenta el timeline en las notas para que la secuencia tenga contexto.</p>
+      <div class="subsection-title">¿Un lead puede estar en dos pipelines al mismo tiempo?</div>
+      <p>El contacto es uno solo, pero puede tener oportunidades en múltiples pipelines. Ejemplo: alguien que quiere vender Y comprar tendría una oportunidad en Seller Pipeline y otra en Buyer Pipeline.</p>
+      <div class="subsection-title">¿Qué debo hacer cuando recibo un nuevo lead asignado?</div>
+      <p>Idealmente en 3 minutos. Abre el contacto, revisa de dónde viene (tag de source), lee si el bot ya tuvo conversación con él, y responde desde Conversations en el canal que usó.</p>
+    </div>
+    <div class="en">
+      <div class="subsection-title">How do I move a lead to a new stage?</div>
+      <p>Opportunities → drag the card to the new stage, or open the lead → tap the current stage → select the new one. Always add a note explaining why it changed. Don't move to Closed Lost without adding the reason.</p>
+      <div class="subsection-title">When do I move a lead from B-Warm to A-Hot?</div>
+      <p>When the lead confirms a 1-3 month timeline, has pre-approval, or asks to see specific properties. Don't move just for a generic positive response — you need evidence of real urgency.</p>
+      <div class="subsection-title">What do I do when a lead says they're not ready yet?</div>
+      <p>Move them to B-Warm or C-Cold based on their timeline. The nurture workflow takes over automatically. Document the timeline in notes so the sequence has context.</p>
+      <div class="subsection-title">Can a lead be in two pipelines at the same time?</div>
+      <p>The contact is one, but can have opportunities in multiple pipelines. Example: someone who wants to sell AND buy would have one opportunity in Seller Pipeline and one in Buyer Pipeline.</p>
+      <div class="subsection-title">What should I do when I receive a new assigned lead?</div>
+      <p>Ideally within 3 minutes. Open the contact, review where they came from (source tag), read if the bot already had a conversation with them, and reply from Conversations on the channel they used.</p>
+    </div>
 
-<div class="section-title"><span class="es">Automaciones y workflows</span><span class="en">Automations and workflows</span></div>
-<div class="es">
-  <div class="subsection-title">¿Cómo sé si una automatización está corriendo sobre mi lead?</div>
-  <p>Ve al contacto → pestaña Automations. Verás todos los workflows activos, en qué paso están y cuándo se envió el último mensaje. Si el lead está en negociación activa, pausa la secuencia para no enviar mensajes genéricos.</p>
-  <div class="subsection-title">¿Cómo pauso una automatización sobre un lead?</div>
-  <p>Contacto → pestaña Automations → toca el workflow activo → Pause. Siempre Pause, nunca Remove a menos que estés seguro. Remove no es reversible. Pause sí.</p>
-  <div class="subsection-title">¿Cómo comparto una conversación con otro agente?</div>
-  <p>No necesitas hacerlo. En GHL todos los usuarios con acceso al contacto ven el historial completo: emails, SMS, llamadas. Todo en Conversations.</p>
-</div>
-<div class="en">
-  <div class="subsection-title">How do I know if an automation is running on my lead?</div>
-  <p>Go to the contact → Automations tab. You'll see all active workflows, what step they're on, and when the last message was sent. If the lead is in active negotiation, pause the sequence to avoid generic messages.</p>
-  <div class="subsection-title">How do I pause an automation on a lead?</div>
-  <p>Contact → Automations tab → tap the active workflow → Pause. Always Pause, never Remove unless certain. Remove is not reversible. Pause is.</p>
-  <div class="subsection-title">How do I share a conversation with another agent?</div>
-  <p>You don't need to. In GHL all users with access to the contact see the complete history: emails, SMS, calls. All in Conversations.</p>
-</div>
-```
+    <div class="section-title"><span class="es">Automaciones y workflows</span><span class="en">Automations and workflows</span></div>
+    <div class="es">
+      <div class="subsection-title">¿Cómo sé si una automatización está corriendo sobre mi lead?</div>
+      <p>Ve al contacto → pestaña Automations. Verás todos los workflows activos, en qué paso están y cuándo se envió el último mensaje. Si el lead está en negociación activa, pausa la secuencia para no enviar mensajes genéricos.</p>
+      <div class="subsection-title">¿Cómo pauso una automatización sobre un lead?</div>
+      <p>Contacto → pestaña Automations → toca el workflow activo → Pause. Siempre Pause, nunca Remove a menos que estés seguro. Remove no es reversible. Pause sí.</p>
+      <div class="subsection-title">¿Cómo comparto una conversación con otro agente?</div>
+      <p>No necesitas hacerlo. En GHL todos los usuarios con acceso al contacto ven el historial completo: emails, SMS, llamadas. Todo en Conversations.</p>
+    </div>
+    <div class="en">
+      <div class="subsection-title">How do I know if an automation is running on my lead?</div>
+      <p>Go to the contact → Automations tab. You'll see all active workflows, what step they're on, and when the last message was sent. If the lead is in active negotiation, pause the sequence to avoid generic messages.</p>
+      <div class="subsection-title">How do I pause an automation on a lead?</div>
+      <p>Contact → Automations tab → tap the active workflow → Pause. Always Pause, never Remove unless certain. Remove is not reversible. Pause is.</p>
+      <div class="subsection-title">How do I share a conversation with another agent?</div>
+      <p>You don't need to. In GHL all users with access to the contact see the complete history: emails, SMS, calls. All in Conversations.</p>
+    </div>
 
   </div><!-- /faqtab-agents -->
 
   <!-- ADMIN TAB -->
-
   <div id="faqtab-admin" class="faq-panel">
 
-```
-<div class="section-title"><span class="es">Workflows y automatizaciones</span><span class="en">Workflows and automations</span></div>
-<div class="es">
-  <div class="subsection-title">¿Cuándo uso "Allow Re-entry"?</div>
-  <p>Actívalo cuando el mismo contacto puede necesitar entrar al workflow más de una vez. Ejemplo: Missed Call Text Back. Desactívalo para secuencias de bienvenida o nurture que solo deben ejecutarse una vez.</p>
-  <div class="subsection-title">¿Por qué un workflow dice SKIPPED en el Execution Log?</div>
-  <p>SKIPPED significa que una condición If/Else no se cumplió. No es un error — es el comportamiento esperado. El workflow evaluó una condición y el resultado fue negativo, por lo que saltó ese branch.</p>
-  <div class="subsection-title">¿Cuántos contactos están dentro de un workflow ahora mismo?</div>
-  <p>Automations → selecciona el workflow → pestaña Enrollment History. Verás todos los contactos activos, en qué paso están y cuándo entraron.</p>
-  <div class="subsection-title">¿Puedo editar un workflow mientras está activo?</div>
-  <p>Sí, pero los cambios solo aplican a nuevos contactos que entren después de guardar. Los que ya están dentro siguen la versión que tenían cuando entraron.</p>
-  <div class="subsection-title">¿Cómo pruebo un workflow antes de publicarlo?</div>
-  <p>Workflow → botón "Test Workflow" → ingresa un contacto de prueba. Ejecuta manualmente y revisa cada paso en el Execution Log. Verifica que los mensajes lleguen y los tags se apliquen correctamente.</p>
-  <div class="subsection-title">¿Cuál es la diferencia entre Pause y Remove from Workflow?</div>
-  <p>Pause detiene el contacto en el paso donde está y puede retomarlo. Remove lo saca completamente — no puede volver a menos que entre de nuevo por el trigger. Siempre Pause a menos que estés seguro.</p>
-</div>
-<div class="en">
-  <div class="subsection-title">When do I use "Allow Re-entry"?</div>
-  <p>Enable it when the same contact may need to enter the workflow more than once. Example: Missed Call Text Back. Disable it for welcome or nurture sequences that should only run once.</p>
-  <div class="subsection-title">Why does a workflow say SKIPPED in the Execution Log?</div>
-  <p>SKIPPED means an If/Else condition wasn't met. It's not an error — it's expected behavior. The workflow evaluated a condition and the result was negative, so it skipped that branch.</p>
-  <div class="subsection-title">How many contacts are inside a workflow right now?</div>
-  <p>Automations → select the workflow → Enrollment History tab. You'll see all active contacts, what step they're on, and when they entered.</p>
-  <div class="subsection-title">Can I edit a workflow while it's active?</div>
-  <p>Yes, but changes only apply to new contacts entering after you save. Contacts already inside follow the version they had when they entered.</p>
-  <div class="subsection-title">How do I test a workflow before publishing?</div>
-  <p>Workflow → "Test Workflow" button → enter a test contact. Run manually and review each step in the Execution Log. Verify messages arrive and tags apply correctly.</p>
-  <div class="subsection-title">What is the difference between Pause and Remove from Workflow?</div>
-  <p>Pause stops the contact at their current step and can resume. Remove takes them out completely — they can't return unless they re-enter through the trigger. Always Pause unless certain.</p>
-</div>
+    <div class="section-title"><span class="es">Workflows y automatizaciones</span><span class="en">Workflows and automations</span></div>
+    <div class="es">
+      <div class="subsection-title">¿Cuándo uso "Allow Re-entry"?</div>
+      <p>Actívalo cuando el mismo contacto puede necesitar entrar al workflow más de una vez. Ejemplo: Missed Call Text Back. Desactívalo para secuencias de bienvenida o nurture que solo deben ejecutarse una vez.</p>
+      <div class="subsection-title">¿Por qué un workflow dice SKIPPED en el Execution Log?</div>
+      <p>SKIPPED significa que una condición If/Else no se cumplió. No es un error — es el comportamiento esperado. El workflow evaluó una condición y el resultado fue negativo, por lo que saltó ese branch.</p>
+      <div class="subsection-title">¿Cuántos contactos están dentro de un workflow ahora mismo?</div>
+      <p>Automations → selecciona el workflow → pestaña Enrollment History. Verás todos los contactos activos, en qué paso están y cuándo entraron.</p>
+      <div class="subsection-title">¿Puedo editar un workflow mientras está activo?</div>
+      <p>Sí, pero los cambios solo aplican a nuevos contactos que entren después de guardar. Los que ya están dentro siguen la versión que tenían cuando entraron.</p>
+      <div class="subsection-title">¿Cómo pruebo un workflow antes de publicarlo?</div>
+      <p>Workflow → botón "Test Workflow" → ingresa un contacto de prueba. Ejecuta manualmente y revisa cada paso en el Execution Log. Verifica que los mensajes lleguen y los tags se apliquen correctamente.</p>
+      <div class="subsection-title">¿Cuál es la diferencia entre Pause y Remove from Workflow?</div>
+      <p>Pause detiene el contacto en el paso donde está y puede retomarlo. Remove lo saca completamente — no puede volver a menos que entre de nuevo por el trigger. Siempre Pause a menos que estés seguro.</p>
+    </div>
+    <div class="en">
+      <div class="subsection-title">When do I use "Allow Re-entry"?</div>
+      <p>Enable it when the same contact may need to enter the workflow more than once. Example: Missed Call Text Back. Disable it for welcome or nurture sequences that should only run once.</p>
+      <div class="subsection-title">Why does a workflow say SKIPPED in the Execution Log?</div>
+      <p>SKIPPED means an If/Else condition wasn't met. It's not an error — it's expected behavior. The workflow evaluated a condition and the result was negative, so it skipped that branch.</p>
+      <div class="subsection-title">How many contacts are inside a workflow right now?</div>
+      <p>Automations → select the workflow → Enrollment History tab. You'll see all active contacts, what step they're on, and when they entered.</p>
+      <div class="subsection-title">Can I edit a workflow while it's active?</div>
+      <p>Yes, but changes only apply to new contacts entering after you save. Contacts already inside follow the version they had when they entered.</p>
+      <div class="subsection-title">How do I test a workflow before publishing?</div>
+      <p>Workflow → "Test Workflow" button → enter a test contact. Run manually and review each step in the Execution Log. Verify messages arrive and tags apply correctly.</p>
+      <div class="subsection-title">What is the difference between Pause and Remove from Workflow?</div>
+      <p>Pause stops the contact at their current step and can resume. Remove takes them out completely — they can't return unless they re-enter through the trigger. Always Pause unless certain.</p>
+    </div>
 
-<div class="section-title"><span class="es">Email y comunicaciones</span><span class="en">Email and communications</span></div>
-<div class="es">
-  <div class="subsection-title">¿Por qué mis emails van a spam?</div>
-  <p>Causas más comunes: dominio sin SPF/DKIM configurado, alta tasa de rebote, subject lines con palabras como GRATIS o GARANTIZADO, o envíos sin link de baja. Verifica en Settings → Email Services que tu dominio esté autenticado.</p>
-  <div class="subsection-title">¿Cómo segmento a quién le envío una campaña?</div>
-  <p>En el paso de Recipients puedes filtrar por: todos los contactos, un tag específico, un stage del pipeline o una combinación. Usa siempre tags para segmentar — es la forma más precisa.</p>
-  <div class="subsection-title">¿Puedo enviar SMS masivos desde GHL?</div>
-  <p>Sí. Marketing → SMS Campaigns. El proceso es igual que email campaigns. Asegúrate de que los contactos hayan dado opt-in explícito — CASL en Canadá requiere consentimiento documentado.</p>
-  <div class="subsection-title">¿Cuándo uso Plain Text vs Design Editor?</div>
-  <p>Plain Text para seguimientos personales y secuencias de nurture — mayor tasa de apertura. Design Editor para newsletters y campañas de marca donde la presentación visual importa.</p>
-</div>
-<div class="en">
-  <div class="subsection-title">Why are my emails going to spam?</div>
-  <p>Most common causes: domain without SPF/DKIM configured, high bounce rate, subject lines with words like FREE or GUARANTEED, or sending without an unsubscribe link. Verify in Settings → Email Services that your domain is authenticated.</p>
-  <div class="subsection-title">How do I segment who receives a campaign?</div>
-  <p>In the Recipients step you can filter by: all contacts, a specific tag, a pipeline stage, or a combination. Always use tags to segment — it's the most precise method.</p>
-  <div class="subsection-title">Can I send bulk SMS from GHL?</div>
-  <p>Yes. Marketing → SMS Campaigns. Same process as email campaigns. Make sure contacts have given explicit opt-in — CASL in Canada requires documented consent.</p>
-  <div class="subsection-title">When do I use Plain Text vs Design Editor?</div>
-  <p>Plain Text for personal follow-ups and nurture sequences — higher open rates. Design Editor for newsletters and brand campaigns where visual presentation matters.</p>
-</div>
+    <div class="section-title"><span class="es">Email y comunicaciones</span><span class="en">Email and communications</span></div>
+    <div class="es">
+      <div class="subsection-title">¿Por qué mis emails van a spam?</div>
+      <p>Causas más comunes: dominio sin SPF/DKIM configurado, alta tasa de rebote, subject lines con palabras como GRATIS o GARANTIZADO, o envíos sin link de baja. Verifica en Settings → Email Services que tu dominio esté autenticado.</p>
+      <div class="subsection-title">¿Cómo segmento a quién le envío una campaña?</div>
+      <p>En el paso de Recipients puedes filtrar por: todos los contactos, un tag específico, un stage del pipeline o una combinación. Usa siempre tags para segmentar — es la forma más precisa.</p>
+      <div class="subsection-title">¿Puedo enviar SMS masivos desde GHL?</div>
+      <p>Sí. Marketing → SMS Campaigns. El proceso es igual que email campaigns. Asegúrate de que los contactos hayan dado opt-in explícito — CASL en Canadá requiere consentimiento documentado.</p>
+      <div class="subsection-title">¿Cuándo uso Plain Text vs Design Editor?</div>
+      <p>Plain Text para seguimientos personales y secuencias de nurture — mayor tasa de apertura. Design Editor para newsletters y campañas de marca donde la presentación visual importa.</p>
+    </div>
+    <div class="en">
+      <div class="subsection-title">Why are my emails going to spam?</div>
+      <p>Most common causes: domain without SPF/DKIM configured, high bounce rate, subject lines with words like FREE or GUARANTEED, or sending without an unsubscribe link. Verify in Settings → Email Services that your domain is authenticated.</p>
+      <div class="subsection-title">How do I segment who receives a campaign?</div>
+      <p>In the Recipients step you can filter by: all contacts, a specific tag, a pipeline stage, or a combination. Always use tags to segment — it's the most precise method.</p>
+      <div class="subsection-title">Can I send bulk SMS from GHL?</div>
+      <p>Yes. Marketing → SMS Campaigns. Same process as email campaigns. Make sure contacts have given explicit opt-in — CASL in Canada requires documented consent.</p>
+      <div class="subsection-title">When do I use Plain Text vs Design Editor?</div>
+      <p>Plain Text for personal follow-ups and nurture sequences — higher open rates. Design Editor for newsletters and brand campaigns where visual presentation matters.</p>
+    </div>
 
-<div class="section-title"><span class="es">Migración FUB a GHL</span><span class="en">FUB to GHL migration</span></div>
-<div class="es">
-  <div class="subsection-title">¿Los Action Plans de FUB se migran automáticamente?</div>
-  <p>No. Cada Action Plan debe recrearse manualmente como Workflow en GHL. GHL Workflows son más potentes — puedes agregar lógica condicional, múltiples canales y exit conditions que FUB no tenía.</p>
-  <div class="subsection-title">¿Cómo mapeo los campos de FUB al importar?</div>
-  <p>En el paso de mapeo, GHL muestra tus columnas del CSV y sus campos disponibles. Los campos estándar se mapean automáticamente. Los campos personalizados de FUB deben crearse primero en Settings → Custom Fields.</p>
-  <div class="subsection-title">¿Qué pasa con las Smart Lists de FUB?</div>
-  <p>No se migran — necesitas recrearlas como Custom Views en GHL. Recrea primero las más críticas: Hot Today, Needs Follow-Up, New This Week, Active Clients, Pending.</p>
-  <div class="subsection-title">¿Los tags de FUB se importan con los contactos?</div>
-  <p>Sí, si tu CSV incluye una columna de Tags y la mapeas al campo Tags de GHL. Asegúrate de que los tags estén en formato kebab-case según la arquitectura de tags del equipo DPT.</p>
-  <div class="subsection-title">¿Qué hago con los contactos históricos después de migrar?</div>
-  <p>Después de importar con el tag fub-import-2026, clasifícalos gradualmente. Los A-Hot van al Buyer Pipeline en el stage correspondiente, los nurture a C-Cold o Nurture. No intentes clasificar 2,000 contactos de golpe.</p>
-</div>
-<div class="en">
-  <div class="subsection-title">Do FUB Action Plans migrate automatically?</div>
-  <p>No. Each Action Plan must be manually recreated as a Workflow in GHL. GHL Workflows are more powerful — you can add conditional logic, multiple channels, and exit conditions that FUB didn't have.</p>
-  <div class="subsection-title">How do I map FUB fields when importing?</div>
-  <p>In the mapping step, GHL shows your CSV columns and available fields. Standard fields map automatically. Custom FUB fields must be created first in Settings → Custom Fields.</p>
-  <div class="subsection-title">What happens to FUB Smart Lists?</div>
-  <p>They don't migrate — recreate them as Custom Views in GHL. Start with the most critical: Hot Today, Needs Follow-Up, New This Week, Active Clients, Pending.</p>
-  <div class="subsection-title">Do FUB tags import with contacts?</div>
-  <p>Yes, if your CSV includes a Tags column and you map it to the Tags field. Make sure tags are in kebab-case format per the DPT team tag architecture.</p>
-  <div class="subsection-title">What do I do with historical contacts after migrating?</div>
-  <p>After importing with the fub-import-2026 tag, classify them gradually. A-Hot leads go to Buyer Pipeline in the corresponding stage, nurture contacts to C-Cold or Nurture stage. Don't try to classify 2,000 contacts all at once.</p>
-</div>
+    <div class="section-title"><span class="es">Migración FUB a GHL</span><span class="en">FUB to GHL migration</span></div>
+    <div class="es">
+      <div class="subsection-title">¿Los Action Plans de FUB se migran automáticamente?</div>
+      <p>No. Cada Action Plan debe recrearse manualmente como Workflow en GHL. GHL Workflows son más potentes — puedes agregar lógica condicional, múltiples canales y exit conditions que FUB no tenía.</p>
+      <div class="subsection-title">¿Cómo mapeo los campos de FUB al importar?</div>
+      <p>En el paso de mapeo, GHL muestra tus columnas del CSV y sus campos disponibles. Los campos estándar se mapean automáticamente. Los campos personalizados de FUB deben crearse primero en Settings → Custom Fields.</p>
+      <div class="subsection-title">¿Qué pasa con las Smart Lists de FUB?</div>
+      <p>No se migran — necesitas recrearlas como Custom Views en GHL. Recrea primero las más críticas: Hot Today, Needs Follow-Up, New This Week, Active Clients, Pending.</p>
+      <div class="subsection-title">¿Los tags de FUB se importan con los contactos?</div>
+      <p>Sí, si tu CSV incluye una columna de Tags y la mapeas al campo Tags de GHL. Asegúrate de que los tags estén en formato kebab-case según la arquitectura de tags del equipo DPT.</p>
+      <div class="subsection-title">¿Qué hago con los contactos históricos después de migrar?</div>
+      <p>Después de importar con el tag fub-import-2026, clasifícalos gradualmente. Los A-Hot van al Buyer Pipeline en el stage correspondiente, los nurture a C-Cold o Nurture. No intentes clasificar 2,000 contactos de golpe.</p>
+    </div>
+    <div class="en">
+      <div class="subsection-title">Do FUB Action Plans migrate automatically?</div>
+      <p>No. Each Action Plan must be manually recreated as a Workflow in GHL. GHL Workflows are more powerful — you can add conditional logic, multiple channels, and exit conditions that FUB didn't have.</p>
+      <div class="subsection-title">How do I map FUB fields when importing?</div>
+      <p>In the mapping step, GHL shows your CSV columns and available fields. Standard fields map automatically. Custom FUB fields must be created first in Settings → Custom Fields.</p>
+      <div class="subsection-title">What happens to FUB Smart Lists?</div>
+      <p>They don't migrate — recreate them as Custom Views in GHL. Start with the most critical: Hot Today, Needs Follow-Up, New This Week, Active Clients, Pending.</p>
+      <div class="subsection-title">Do FUB tags import with contacts?</div>
+      <p>Yes, if your CSV includes a Tags column and you map it to the Tags field. Make sure tags are in kebab-case format per the DPT team tag architecture.</p>
+      <div class="subsection-title">What do I do with historical contacts after migrating?</div>
+      <p>After importing with the fub-import-2026 tag, classify them gradually. A-Hot leads go to Buyer Pipeline in the corresponding stage, nurture contacts to C-Cold or Nurture stage. Don't try to classify 2,000 contacts all at once.</p>
+    </div>
 
-<div class="section-title"><span class="es">Diagnóstico técnico</span><span class="en">Technical diagnosis</span></div>
-<div class="es">
-  <div class="subsection-title">Un lead no recibió el SMS de bienvenida</div>
-  <p>Verifica en orden: 1) ¿El workflow se disparó? — Contacto → Automations — si no aparece, el trigger no se activó. 2) ¿El número es válido? — necesita +1, no es landline. 3) ¿Está marcado Opt-Out? — GHL bloquea SMS silenciosamente. 4) ¿El A2P está activo? — Settings → Phone Numbers → status Active. 5) ¿Lo filtró el carrier? — contacta por email o llamada.</p>
-  <div class="subsection-title">Un workflow corre sobre contactos que no debe</div>
-  <p>Automations → toggle a Paused inmediatamente. Contacts → filtra por workflow activo → Bulk Action → Remove from Workflow. Informa a Jaime y Deb si ya se enviaron mensajes. Causa raíz más común: trigger demasiado amplio sin filtros de fecha.</p>
-  <div class="subsection-title">El bot no responde en algún canal</div>
-  <p>AI Agents → Conversation AI → Bot Settings → verifica que el canal esté activado y el bot en modo Auto-Pilot. Si el canal es Facebook o Instagram, verifica que la integración no se haya desconectado en Settings → Integrations.</p>
-  <div class="subsection-title">Un agente no recibe leads en su app</div>
-  <p>Verifica: Lead Connector instalado, notificaciones habilitadas (New Lead Assigned + New Message), sub-account correcta seleccionada, número de teléfono asignado en su perfil de usuario.</p>
-</div>
-<div class="en">
-  <div class="subsection-title">A lead didn't receive the welcome SMS</div>
-  <p>Check in order: 1) Did the workflow fire? — Contact → Automations — if not there, trigger didn't activate. 2) Is the number valid? — needs +1, not a landline. 3) Is it Opt-Out? — GHL blocks SMS silently. 4) Is A2P active? — Settings → Phone Numbers → status Active. 5) Did the carrier filter it? — contact by email or call.</p>
-  <div class="subsection-title">A workflow is running on wrong contacts</div>
-  <p>Automations → toggle to Paused immediately. Contacts → filter by active workflow → Bulk Action → Remove from Workflow. Inform Jaime and Deb if messages were sent. Most common root cause: trigger too broad without date filters.</p>
-  <div class="subsection-title">The bot isn't responding on a channel</div>
-  <p>AI Agents → Conversation AI → Bot Settings → verify the channel is enabled and bot is in Auto-Pilot mode. If the channel is Facebook or Instagram, verify the integration hasn't disconnected in Settings → Integrations.</p>
-  <div class="subsection-title">An agent isn't receiving leads in their app</div>
-  <p>Verify: Lead Connector installed, notifications enabled (New Lead Assigned + New Message), correct sub-account selected, phone number assigned in their user profile.</p>
-</div>
-```
+    <div class="section-title"><span class="es">Diagnóstico técnico</span><span class="en">Technical diagnosis</span></div>
+    <div class="es">
+      <div class="subsection-title">Un lead no recibió el SMS de bienvenida</div>
+      <p>Verifica en orden: 1) ¿El workflow se disparó? — Contacto → Automations — si no aparece, el trigger no se activó. 2) ¿El número es válido? — necesita +1, no es landline. 3) ¿Está marcado Opt-Out? — GHL bloquea SMS silenciosamente. 4) ¿El A2P está activo? — Settings → Phone Numbers → status Active. 5) ¿Lo filtró el carrier? — contacta por email o llamada.</p>
+      <div class="subsection-title">Un workflow corre sobre contactos que no debe</div>
+      <p>Automations → toggle a Paused inmediatamente. Contacts → filtra por workflow activo → Bulk Action → Remove from Workflow. Informa a Jaime y Deb si ya se enviaron mensajes. Causa raíz más común: trigger demasiado amplio sin filtros de fecha.</p>
+      <div class="subsection-title">El bot no responde en algún canal</div>
+      <p>AI Agents → Conversation AI → Bot Settings → verifica que el canal esté activado y el bot en modo Auto-Pilot. Si el canal es Facebook o Instagram, verifica que la integración no se haya desconectado en Settings → Integrations.</p>
+      <div class="subsection-title">Un agente no recibe leads en su app</div>
+      <p>Verifica: Lead Connector instalado, notificaciones habilitadas (New Lead Assigned + New Message), sub-account correcta seleccionada, número de teléfono asignado en su perfil de usuario.</p>
+    </div>
+    <div class="en">
+      <div class="subsection-title">A lead didn't receive the welcome SMS</div>
+      <p>Check in order: 1) Did the workflow fire? — Contact → Automations — if not there, trigger didn't activate. 2) Is the number valid? — needs +1, not a landline. 3) Is it Opt-Out? — GHL blocks SMS silently. 4) Is A2P active? — Settings → Phone Numbers → status Active. 5) Did the carrier filter it? — contact by email or call.</p>
+      <div class="subsection-title">A workflow is running on wrong contacts</div>
+      <p>Automations → toggle to Paused immediately. Contacts → filter by active workflow → Bulk Action → Remove from Workflow. Inform Jaime and Deb if messages were sent. Most common root cause: trigger too broad without date filters.</p>
+      <div class="subsection-title">The bot isn't responding on a channel</div>
+      <p>AI Agents → Conversation AI → Bot Settings → verify the channel is enabled and bot is in Auto-Pilot mode. If the channel is Facebook or Instagram, verify the integration hasn't disconnected in Settings → Integrations.</p>
+      <div class="subsection-title">An agent isn't receiving leads in their app</div>
+      <p>Verify: Lead Connector installed, notifications enabled (New Lead Assigned + New Message), correct sub-account selected, phone number assigned in their user profile.</p>
+    </div>
 
   </div><!-- /faqtab-admin -->
 </div>
 
 <!-- ══ VIDEOS ══ -->
-
 <div id="sec-videos" class="section">
   <div class="es"><div class="page-title">Recursos de video</div><div class="page-sub">Todos los videos organizados por sección del curso.</div></div>
   <div class="en"><div class="page-title">Video Resources</div><div class="page-sub">All videos organized by course section.</div></div>
@@ -2002,7 +1978,6 @@ body.theme-sky .chat-send { background: var(–sky); color: #030d1f; }
 </div><!-- /content -->
 
 <!-- CHAT -->
-
 <div class="chat-bubble">
   <button class="chat-toggle" onclick="toggleChat()">
     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
